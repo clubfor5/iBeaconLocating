@@ -7,10 +7,14 @@ import thread
 import operator
 import numpy as np
 #from requests_futures.sessions import FuturesSession as FS
+import ConfigParser
+cp = ConfigParser.ConfigParser()
+cp.read("db.cfg")
 
-beta = 0.7
-locked = False
-beacons = ['12:3b:6a:1b:90:a1','12:3b:6a:1b:90:bb','12:3b:6a:1b:90:a6','12:3b:6a:1b:90:63','12:3b:6a:1b:90:30', '12:3b:6a:1b:91:6e','12:3b:6a:1b:93:52','12:3b:6a:1b:8e:96','12:3b:6a:1b:87:ce', '12:3b:6a:1b:90:9f']
+beta = cp.getfloat('iBeacon_config', "EWMA_Beta")
+print(beta * 99)
+beacons =  cp.get('iBeacon_address', "beacons").split(',')
+print(beacons)
 myRSSI = []
 for i in range(0,10):
     myRSSI.append(-150)
@@ -33,7 +37,7 @@ def beaconScanner():
         myDevice = False
         global lastSended, scanner,locked   
         devices = scanner.scan(0.47) #insert a time to timeout inside the squares. this returns a list with ALL bluetooth devices nearby (not only BLE).
-        #print(time.time() - currentTime)
+        print(time.time() - currentTime)
         for dev in devices:
             if not beacons.__contains__(dev.addr): #first of all check if the device at this position is or not one of ours beacons. if not, we just continue the loop, passing to next interaction.
                 continue
