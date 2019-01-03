@@ -1,6 +1,6 @@
 from bluepy.btle import Scanner, DefaultDelegate
 import urllib3
-import time
+impor	t time
 import json
 #import mythread
 import thread
@@ -36,7 +36,7 @@ def beaconScanner():
         currentTime = time.time()
         myDevice = False
         global lastSended, scanner,locked   
-        devices = scanner.scan(0.6) #insert a time to timeout inside the squares. this returns a list with ALL bluetooth devices nearby (not only BLE).
+        devices = scanner.scan(0.47) #insert a time to timeout inside the squares. this returns a list with ALL bluetooth devices nearby (not only BLE).
         print(time.time() - currentTime)
         for dev in devices:
             if not beacons.__contains__(dev.addr): #first of all check if the device at this position is or not one of ours beacons. if not, we just continue the loop, passing to next interaction.

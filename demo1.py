@@ -6,11 +6,12 @@ import json
 import thread
 import operator
 import numpy as np
+import rssiTable
 #from requests_futures.sessions import FuturesSession as FS
 import ConfigParser
 cp = ConfigParser.ConfigParser()
 cp.read("db.cfg")
-
+myTable = rssiTable.RssiTable(10, 10)
 beta = cp.getfloat('iBeacon_config', "EWMA_Beta")
 print(beta * 99)
 beacons =  cp.get('iBeacon_address', "beacons").split(',')
@@ -36,8 +37,9 @@ def beaconScanner():
         currentTime = time.time()
         myDevice = False
         global lastSended, scanner,locked   
-        devices = scanner.scan(0.6) #insert a time to timeout inside the squares. this returns a list with ALL bluetooth devices nearby (not only BLE).
+        devices = scanner.scan(1) #insert a time to timeout inside the squares. this returns a list with ALL bluetooth devices nearby (not only BLE).
         print(time.time() - currentTime)
+        rssiTable = np.zeros(10)
         for dev in devices:
             if not beacons.__contains__(dev.addr): #first of all check if the device at this position is or not one of ours beacons. if not, we just continue the loop, passing to next interaction.
                 continue
@@ -45,36 +47,15 @@ def beaconScanner():
             elif beacons.__contains__(dev.addr):
                 myDevice = True
                 index = beacons.index(dev.addr)
-                if myRSSI[index] == -150:
-                    myRSSI[index] = dev.rssi
-                else:
-                    myRSSI[index] = int(myRSSI[index] * beta + dev.rssi * (1-beta))
-                myFile.writelines(json.dumps({"addr": dev.addr, "RSSI": dev.rssi, "time": currentTime}, sort_keys = True, indent = 4, separators=(',', ':')) + "\n")
-                count = count + 1
+                rssiTable[index] = dev.rssi
+        
         tick = tick + 1
+        myTable.addRawData(rssiTable)
         #(time.time() - currentTime)
-        if myDevice == True:
-            print("Received "),
-            print(count),
-            print(" packets in time"),
-            print(currentTime)
-            total = total + count
-            print("Total: "),
-            print(total),
-            print(" Tick: "),
-            print(tick),
-            print(" Average: "),
-            print(total / tick)
-            count = 0
-        else:
-            loss = loss + 1
-            print("packet loss"),
-            print(loss),
-            print("int time"),
-            print(currentTime)
-            count = 0
-        position()
-        print("")
+        print(myTable.table)
+        print("Var:")
+        print(myTable.validVar())
+        
         
 def position():
     a = myRSSI
@@ -83,4 +64,6 @@ def position():
     print(c)
     
     
+
+
 thread.start_new_thread(beaconScanner())
