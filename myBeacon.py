@@ -6,15 +6,20 @@ import json
 import thread
 import operator
 import numpy as np
+import mtrClient as mtr
+import json      
+
+
+myClient = mtr.mtrClient()
+
 #from requests_futures.sessions import FuturesSession as FS
 import ConfigParser
 cp = ConfigParser.ConfigParser()
 cp.read("db.cfg")
 
 beta = cp.getfloat('iBeacon_config', "EWMA_Beta")
-print(beta * 99)
 beacons =  cp.get('iBeacon_address', "beacons").split(',')
-print(beacons)
+#print(beacons)
 myRSSI = []
 for i in range(0,10):
     myRSSI.append(-150)
@@ -36,7 +41,7 @@ def beaconScanner():
         currentTime = time.time()
         myDevice = False
         global lastSended, scanner,locked   
-        devices = scanner.scan(0.6) #insert a time to timeout inside the squares. this returns a list with ALL bluetooth devices nearby (not only BLE).
+        devices = scanner.scan(0.57) #insert a time to timeout inside the squares. this returns a list with ALL bluetooth devices nearby (not only BLE).
         print(time.time() - currentTime)
         for dev in devices:
             if not beacons.__contains__(dev.addr): #first of all check if the device at this position is or not one of ours beacons. if not, we just continue the loop, passing to next interaction.
@@ -79,8 +84,26 @@ def beaconScanner():
 def position():
     a = myRSSI
     c = np.argsort(a)
-    print(a)
+    MAX = myRSSI[c[9]]
+    SMAX = myRSSI[c[8]]
     print(c)
+    if MAX - SMAX >= 8:
+        position = c[9] * 6
+    elif MAX - SMAX >= 4:
+        position = (c[9] * 0.75 + c[8]* 0.25) * 6
+    else:
+        position = (c[9] * 0.5 + c[8] * 0.5) * 6
+    print(position)
+    data = [{
+    'mac': 'testMac',
+    'ts': int(time.time()),
+    'loc_x': '0',
+    'loc_y': position,
+    'remark': 'Mtrtest',
+    }]
+    
+    myClient.sendData(data)
+    
     
     
 thread.start_new_thread(beaconScanner())
