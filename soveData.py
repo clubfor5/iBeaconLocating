@@ -1,16 +1,19 @@
 import numpy as np
-import urllib3
 import ConfigParser
 cp = ConfigParser.ConfigParser()
 cp.read("db.cfg")
 beta = cp.getfloat('iBeacon_config', "EWMA_Beta")
 beacons =  cp.get('iBeacon_address', "beacons").split(',')
-print(beacons)
+for num in beacons:
+    beacons[beacons.index(num)] = num.replace(":","")
+#print(beacons)
 
+numBeacons = len(beacons)
+#print(numBeacons)
 def validVar():
-        validVar = np.zeros(10, np.float)
-        validSequences = np.zeros(10)
-        for i in range(0, 10):
+        validVar = np.zeros(numBeacons, np.float)
+        validSequences = np.zeros(numBeacons, np.int)
+        for i in range(0, numBeacons):
             table = a[...,i]
              #remove 0s
             E2X = 0
@@ -32,11 +35,12 @@ def validVar():
                 validVar[i] = EX2 - E2X
             else:
                 validVar[i] = 0
+            validVar[i] = round(validVar[i], 6)
         return validVar
 
 def mean():
-    mean = np.zeros(10, np.float)
-    validSequences = np.zeros(10)
+    mean = np.zeros(numBeacons, np.float)
+    validSequences = np.zeros(numBeacons)
     for i in range(0, 10):
         table = a[...,i]
              #remove 0s
@@ -56,8 +60,8 @@ def mean():
     return mean
 
 def num():
-    num = np.zeros(10, np.float)
-    for i in range(0, 10):
+    num = np.zeros(numBeacons, np.float)
+    for i in range(0, numBeacons):
         table = a[...,i]
         for j in range(0, a.shape[0]):
             if(table[j] != 0):
@@ -74,12 +78,12 @@ def num():
             myLine = myLine.replace("]","")
             output.write(myLine+"\n")
         output.close()"""
-meanV = np.zeros((18,10), np.float)
-var = np.zeros((18,10), np.float)
+meanV = np.zeros((18,numBeacons), np.float)
+var = np.zeros((18,numBeacons), np.float)
 for i in range(0,7):
     a = np.loadtxt("Data/0" + str(i) + ".txt")
     #print(a)
-    var = validVar()
+    var[i] = validVar()
     #print("the var of " + str(i *3) + "m is "),
     #print( var )
     meanV[i] = mean()
@@ -93,7 +97,7 @@ for i in range(0,7):
 for i in range(10,18):
     a = np.loadtxt("Data/0" + str(i) + ".txt")
     #print(a)
-    var = validVar()
+    var[i] = validVar()
     #print("the var of " + str(i *3) + "m is "),
     #print( var )
     meanV[i] = mean()
@@ -103,3 +107,23 @@ for i in range(10,18):
     numV = num()
    # print(numV)
    # print("\n")
+fingerPrint = []
+for i in range(0,18):
+    positionX = str(i * 3)
+    positionY = "0"
+    positionNum = str(i)
+    direction = 'D'
+    rssiTable = ""
+    for j in range(0,10):
+        addr = beacons[j]
+        mean = "%.1f" % float(meanV[i][j])
+        var1  = "%.1f" % float(var[i][j])
+        myTable = addr + ":" + mean + "," + "0.0," + var1 + " "
+        rssiTable = rssiTable + myTable
+    buffer = positionX + "," + positionY + "," + positionNum + "," + direction + " " + rssiTable
+    fingerPrint.append(buffer)
+finfile = open("fp.txt",'w')
+for line in fingerPrint:
+    finfile.write(line + "\n")
+    
+#print(fingerPrint)
