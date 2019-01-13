@@ -1,4 +1,5 @@
 import numpy as np
+from scipy.spatial.distance import pdist
 position = []
 
 def getFingerPrint():
@@ -18,9 +19,9 @@ def getFingerPrint():
              addRSSI = sublines[i].split(":")
              addr.append(addRSSI[0])
              signal = addRSSI[1].split(",")
-             RSSI.append(signal[0])
-             sth.append(signal[1])
-             var.append(signal[2])
+             RSSI.append(float(signal[0]))
+             sth.append(float(signal[1]))
+             var.append(float(signal[2]))
         fpTable[fp.index(lines)] = RSSI
         try:
             positionX = int(position[0])
@@ -29,10 +30,31 @@ def getFingerPrint():
             direction = position[3]
         except ValueError:
             print ("invalid input")
-    print(fpTable)
+   # print(fpTable)
     fpFile.close()
     return fpTable
 
-getFingerPrint()
-        
+#getFingerPrint()
+def eucDistance(vec1, vec2):
+    return np.linalg.norm(vec1-vec2)
+
+def cosDistance(vec1, vec2):
+    if np.linalg.norm(vec1)!= 0 and np.linalg.norm(vec2)!= 0:
+        return pdist(np.vstack([vec1, vec2]),'cosine')
+    else:
+        return 0
+    
+def determination(vec, table, tableLength):
+    eucDisTable = np.zeros(tableLength)
+    cosDisTable = np.zeros(tableLength)
+    for i in range(0, tableLength):
+        eucDisTable[i] = eucDistance(vec, table[i])
+    print(eucDisTable)
+    #for i in range(0, tableLength):
+       # cosDisTable[i] = cosDistance(vec, table[i])
+    #print(cosDisTable)    
+    return  np.argsort(eucDisTable)
+
+table = getFingerPrint()
+
         
