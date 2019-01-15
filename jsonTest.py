@@ -9,3 +9,4 @@ print(text[0])
 text1 = json.loads(json)
 print(text1)
 pinrt(text1[0])
+WTF

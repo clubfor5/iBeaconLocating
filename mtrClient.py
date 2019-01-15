@@ -3,7 +3,7 @@ import time
 import json
 
 class mtrClient:
-    def __init__(self, host = '143.89.144.200', port = 4001):
+    def __init__(self, host = '143.89.10.167', port = 4001):
         self.host = host
         self.port = port
         self.socket = socket(AF_INET, SOCK_STREAM)

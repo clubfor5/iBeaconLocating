@@ -2,7 +2,7 @@ from socket import socket, AF_INET, SOCK_STREAM
 import time
 import json
 
-server_ip = '192.168.10.112'
+server_ip = '192.168.10.167'
 server_port = 4001
 if __name__ == '__main__':
     client = socket(AF_INET, SOCK_STREAM)
