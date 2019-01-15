@@ -1,15 +1,26 @@
 import numpy as np
 from scipy.spatial.distance import pdist
-position = []
-
-def getFingerPrint():
-    fpFile = open("fp.txt",'r')
-    fp = fpFile.readlines()
-    fpNum = len(fp)
-    numBeacons = len(fp[0].split(" "))-2
-    fpTable = np.zeros((fpNum, numBeacons),np.float)
-    for lines in fp:
-        sublines = lines.split(" ")
+import ConfigParser
+cp = ConfigParser.ConfigParser()
+cp.read("db.cfg")
+fpNum = cp.get('iBeacon_config', "fpNum")
+beaconNums = int(cp.get('iBeacon_address', "numOfBeacons"))
+def getFingerPrintTable():
+    fpTable = []
+    for i in range(0, int(fpNum)):
+        fileName = "fp/" + str(i) + ".txt"
+        try:
+            fpFile = open(fileName, 'r')
+        except:
+            print("the file " + fileName + " is not valid, please repeat to collect finger print")
+            buff = []
+            for i in range (0,beaconNums):
+                buff.append(0)
+            fpTable.append(buff)
+            continue
+        fp = fpFile.readlines()
+        numBeacons = len(fp[0].split(" ")) - 2
+        sublines = fp[0].split(" ")
         position = sublines[0].split(",")
         addr  = []
         RSSI  = []
@@ -22,16 +33,15 @@ def getFingerPrint():
              RSSI.append(float(signal[0]))
              sth.append(float(signal[1]))
              var.append(float(signal[2]))
-        fpTable[fp.index(lines)] = RSSI
+        fpTable.append(RSSI)
         try:
             positionX = int(position[0])
             positionY = int(position[1])
             positionTag = int(position[2])
             direction = position[3]
         except ValueError:
-            print ("invalid input")
-   # print(fpTable)
-    fpFile.close()
+            print ("invalid finger print file!")
+        fpFile.close()
     return fpTable
 
 #getFingerPrint()
@@ -50,11 +60,10 @@ def determination(vec, table, tableLength):
     for i in range(0, tableLength):
         eucDisTable[i] = eucDistance(vec, table[i])
     print(eucDisTable)
-    #for i in range(0, tableLength):
-       # cosDisTable[i] = cosDistance(vec, table[i])
-    #print(cosDisTable)    
     return  np.argsort(eucDisTable)
 
-table = getFingerPrint()
+table = getFingerPrintTable()
+for line in table:
+    print(line)
 
         
