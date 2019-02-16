@@ -17,9 +17,9 @@ def getBeaconInfo():
 		beaconOperator = beacon.split(',')
 		addressBuffer = beaconOperator[0]
 		try: 
-			positionXBuffer = beaconOperator[1]
-			positionYBuffer = beaconOperator[2]
-			tagBuffer = beaconOperator[3]
+			positionXBuffer = (float)(beaconOperator[1])
+			positionYBuffer = (float)(beaconOperator[2])
+			tagBuffer = (int)(beaconOperator[3])
 		except:
 			print("failed of construction of beacon addressTable, error with addressTable.cfg")			
 			break	

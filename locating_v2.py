@@ -17,54 +17,31 @@ import fingerprint as finp
 import beaconAddress as beaconAdd
 import filters as flts
 import speedDetector
+import position as pos
 #myClient = mtr.mtrClient()
 #myClient = mtr.mtrClient()
+import RSSITable
+debug = True
 
 class ScanDelegate(DefaultDelegate):
     def __init__(self):
         DefaultDelegate.__init__(self)		
 		
 
+### devices: scanned result; beacons: address table of beacons; mask: num of times the the address not received.
 
-
+            
+    
 #=========#=====================#==========#======================#=========
 def beaconScanner():
     currentTime = time.time()
     collections = np.zeros(numOfBeacons)
+    mask = np.zeros(numOfBeacons)
     while True:
-        global lastSended, scanner,locked
-        # insert a time to timeout inside the squares. this returns a list with ALL bluetooth devices nearby (not only BLE).
+        global scanner
         devices = scanner.scan(0.57)
-        #get the existing RSSI table
-        #for i in range(0,numOfBeacons):
-            #myRSSI[i] = 0
-        for dev in devices:
-            # first of all check if the device at this position is or not one of ours beacons. if not, we just continue the loop, passing to next interaction.
-            if not beacons.__contains__(dev.addr):
-                continue
-            elif beacons.__contains__(dev.addr):
-                index = beacons.index(dev.addr)
-                temp = flts.ewma(myRSSI[index], dev.rssi, beta)
-                myRSSI[index] = round(myRSSI[index],2)
-    
-        ####
-        #print("Raw Data:", myRSSI)
-        sample = []
-        for rssi in myRSSI:
-            sample.append(rssi)
-        maxIndex = myRSSI.index(max(myRSSI))
-        #print(maxIndex)
-        if maxIndex == 0:
-            for i in range(3,10):
-                sample[i] = 0
-        elif maxIndex == 9:
-            for i in range(0, 7):
-                sample[i] = 0
-        else:
-            for i in range(0,maxIndex-1):
-                sample[i] = 0
-            for i in range(maxIndex+2,10):
-                sample[i] = 0
+        # insert a time to timeout inside the squares. this returns a list with ALL bluetooth devices nearby (not only iBeacon).
+        RSSITable.getEWMAFilteredRSSI(devices, beaconAddress, mask, myRSSI)
         data = [{
         'Type': 'Raw',
         'mac': 'testMac',
@@ -77,59 +54,33 @@ def beaconScanner():
             print("Original Output: ")
             className = finp.knnInitial_dimension(sample, fpTable, positionInfo, 3)
             print
-            print("Modified Output: ")
-            calssName = finp.knnInitial_dimension(myRSSI, fpTable, positionInfo, 3)
-           #print
-           #print("proximity result: ")
-           #position()
         elif method == 'proximity':
-            position()
+            positionX,positionY, timeTag = pos.proximity(startTime, myRSSI, beaconInfos)
+            speedDetector.pushLocation(timeTag, positionX)
+            speedDetector.speedCalculate()
 
-
-def position():
-    ### Sort the strength of signals 
-    a = myRSSI
-    c = np.argsort(a)
-    MAX = myRSSI[c[numOfBeacons - 1]]
-    SMAX = myRSSI[c[numOfBeacons - 2]]
-    
-    ### Check out the difference of signal strength 
-    if MAX - SMAX >= 8:
-        position = c[numOfBeacons - 1] * 6
-    elif MAX - SMAX >= 4:
-        position = (c[numOfBeacons -1] * 0.75 + c[numOfBeacons - 2] * 0.25) * 6
-    else:
-        position = (c[numOfBeacons - 1] * 0.5 + c[numOfBeacons - 2] * 0.5) * 6
-    
-    ### in case that max and smax is not neighbor 
-    if abs(c[numOfBeacons -1] -c[numOfBeacons - 2] ) >= 2:
-        position = c[numOfBeacons - 1] * 6
-    
-    timeTag = round(time.time() - startTime, 2)
-    speedDetector.pushLocation(timeTag, position)
-    speedDetector.speedCalculate()
-    print('loc:', position, timeTag)
-    #print()
-    
 
 if __name__ == '__main__':
-    #print("hello!")
+    #### load program information from db.cfg 
     cp = ConfigParser.ConfigParser()
     cp.read("db.cfg")
     method = cp.get('iBeacon_config', "locatingMethod")
     beta = cp.get('iBeacon_config','EWMA_Beta')
-    beacons = []
-    #### Load things from the config file
+    
+    # load beacon informations 
+    beaconAddress = []
     beaconInfos,numOfBeacons = beaconAdd.getBeaconInfo()
-    myRSSI = []
-    for i in range(numOfBeacons):
-        myRSSI.append(0)
+    
+    #### all the information of iBeacon information has been restored.
     for info in beaconInfos:
-        beacons.append(info.address)
+        beaconAddress.append(info.address)
         print("Beacon Num"),
         print(info.tag),
         print("with address"),
         print(info.address)
+    myRSSI = []
+    for i in range(numOfBeacons):
+        myRSSI.append(-120)
     #--defining the scan object--#
     startTime = time.time()
     scanner = Scanner().withDelegate(ScanDelegate())
