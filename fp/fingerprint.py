@@ -6,7 +6,7 @@ import ConfigParser
 position = []
 import time
 cp = ConfigParser.ConfigParser()
-cp.read("db.cfg")
+cp.read("config/db.cfg")
 fpNum = cp.get('iBeacon_config', "fpNum")
 beaconNums = int(cp.get('iBeacon_address', "numOfBeacons"))
 

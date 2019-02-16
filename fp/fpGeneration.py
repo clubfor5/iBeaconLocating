@@ -1,7 +1,7 @@
 import numpy as np
 import ConfigParser
 cp = ConfigParser.ConfigParser()
-cp.read("db.cfg")
+cp.read("config/db.cfg")
 MAC =  cp.get('iBeacon_address', "beacons").split(',')
 for num in MAC:
     MAC[MAC.index(num)] = num.replace(":","")

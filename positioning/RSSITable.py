@@ -1,7 +1,7 @@
 import ConfigParser
 
 cp = ConfigParser.ConfigParser()
-cp.read("db.cfg")
+cp.read("config/db.cfg")
 debug = cp.get('iBeacon_config', "rssiInfo")
 
 def getEWMAFilteredRSSI(devices, beaconAddress, mask, rssiTable):

@@ -9,7 +9,7 @@ class BeaconPoll:
 def getBeaconInfo():
 	beaconInfos = []
 	cp = ConfigParser.ConfigParser()
-	cp.read("addressTable.cfg")
+	cp.read("config/addressTable.cfg")
 	beaconAdd = cp.get('iBeacon_address', "beacons").split(';\n')
 	numOfBeacons = len(beaconAdd)
 	for beacon in beaconAdd:

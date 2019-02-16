@@ -11,16 +11,16 @@ import json
 import ConfigParser
 import sys
 import os
-import fpGeneration as fpG
+import fp.fpGeneration as fpG
 import mtrClient as mtr
-import fingerprint as finp
-import beaconAddress as beaconAdd
-import filters as flts
-import speedDetector
-import position as pos
+import fp.fingerprint as finp
+import positioning.beaconAddress as beaconAdd
+import positioning.filters as flts
+import positioning.speedDetector as speedDetector
+import positioning.position as pos
 #myClient = mtr.mtrClient()
 #myClient = mtr.mtrClient()
-import RSSITable
+import positioning.RSSITable as RSSITable
 debug = True
 
 class ScanDelegate(DefaultDelegate):
@@ -53,7 +53,6 @@ def beaconScanner():
         if method == "fingerprint":
             print("Original Output: ")
             className = finp.knnInitial_dimension(sample, fpTable, positionInfo, 3)
-            print
         elif method == 'proximity':
             positionX,positionY, timeTag = pos.proximity(startTime, myRSSI, beaconInfos)
             speedDetector.pushLocation(timeTag, positionX)
@@ -63,7 +62,7 @@ def beaconScanner():
 if __name__ == '__main__':
     #### load program information from db.cfg 
     cp = ConfigParser.ConfigParser()
-    cp.read("db.cfg")
+    cp.read("config/db.cfg")
     method = cp.get('iBeacon_config', "locatingMethod")
     beta = cp.get('iBeacon_config','EWMA_Beta')
     
