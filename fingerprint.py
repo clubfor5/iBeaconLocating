@@ -1,12 +1,51 @@
 import numpy as np
-from scipy.spatial.distance import pdist
+# from scipy.spatial.distance import pdist
+from numpy import *
+import operator
 import ConfigParser
+position = []
+import time
 cp = ConfigParser.ConfigParser()
 cp.read("db.cfg")
 fpNum = cp.get('iBeacon_config', "fpNum")
 beaconNums = int(cp.get('iBeacon_address', "numOfBeacons"))
+
+
+def knnInitial_dimension(sample, dataset, labels, knn):
+    checkPoint = []
+    for i in range(len(sample)):
+        if sample[i] == 0:
+            checkPoint.append(i)
+    print('checkPoint =', checkPoint)
+    #finalCheckPoint = checkContinuePoint(checkPoint)
+    sample = delete(sample, checkPoint, axis=0)
+    newDataSet = delete(dataset, checkPoint, axis=1)
+    dataSetSize = newDataSet.shape[0]
+    # print(tile(sample, (dataSetSize, 1)))
+    diffMat = tile(sample, (dataSetSize, 1)) - newDataSet
+    sqDiffMat = diffMat ** 2
+    sqDist = sqDiffMat.sum(axis=1)
+    dist = sqDist ** 0.5
+    sortDist = dist.argsort()
+    print(sortDist)
+    result = []
+    for i in range(knn):
+        voteLabel = labels[sortDist[i]]
+        data = [{
+            'ts': int(time.time()),
+            'loc_x': voteLabel,
+            'loc_y': 0,
+            'dist': dist[sortDist[i]],
+        }]
+        result.append(data)
+    print(result)
+    return result
+
+
+
 def getFingerPrintTable():
     fpTable = []
+    positionInfo = []
     for i in range(0, int(fpNum)):
         fileName = "fp/" + str(i) + ".txt"
         try:
@@ -17,6 +56,7 @@ def getFingerPrintTable():
             for i in range (0,beaconNums):
                 buff.append(0)
             fpTable.append(buff)
+            positionInfo.append(0)
             continue
         fp = fpFile.readlines()
         numBeacons = len(fp[0].split(" ")) - 2
@@ -39,31 +79,10 @@ def getFingerPrintTable():
             positionY = int(position[1])
             positionTag = int(position[2])
             direction = position[3]
+            positionInfo.append(positionX)
         except ValueError:
             print ("invalid finger print file!")
         fpFile.close()
-    return fpTable
+        # print(positionInfo)
+    return fpTable, positionInfo
 
-#getFingerPrint()
-def eucDistance(vec1, vec2):
-    return np.linalg.norm(vec1-vec2)
-
-def cosDistance(vec1, vec2):
-    if np.linalg.norm(vec1)!= 0 and np.linalg.norm(vec2)!= 0:
-        return pdist(np.vstack([vec1, vec2]),'cosine')
-    else:
-        return 0
-    
-def determination(vec, table, tableLength):
-    eucDisTable = np.zeros(tableLength)
-    cosDisTable = np.zeros(tableLength)
-    for i in range(0, tableLength):
-        eucDisTable[i] = eucDistance(vec, table[i])
-    print(eucDisTable)
-    return  np.argsort(eucDisTable)
-
-table = getFingerPrintTable()
-for line in table:
-    print(line)
-
-        

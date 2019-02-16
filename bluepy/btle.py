@@ -832,8 +832,6 @@ class Scanner(BluepyHelper):
                 # device found
                 addr = binascii.b2a_hex(resp['addr'][0]).decode('utf-8')
                 addr = ':'.join([addr[i:i+2] for i in range(0,12,2)])
-                if addr.find("12:3b:6a:1b") == -1:
-                    continue
                 if addr in self.scanned:
                     dev = self.scanned[addr]
                 else:
@@ -845,16 +843,15 @@ class Scanner(BluepyHelper):
                  
             else:
                 raise BTLEInternalError("Unexpected response: " + respType, resp)
-    
+
     def getDevices(self):
         return self.scanned.values()
 
     def scan(self, timeout=10, passive=False):
         self.clear()
-        self.start(passive=passive)    
+        self.start(passive=passive)
         self.process(timeout)
         self.stop()
-       
         return self.getDevices()
 
 

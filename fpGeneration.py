@@ -44,7 +44,7 @@ def getMean(rssiRawData):
         EX2 = 0.0
         Counter = 0
         for j in range(0, rssiRawData.shape[0]):
-            if(table[j] != 0):
+            if(table[j] != -100):
                 Counter = Counter + 1
                 SUM = SUM + table[j]
         if Counter != 0:

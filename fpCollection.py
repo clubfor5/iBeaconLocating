@@ -41,8 +41,9 @@ cp.read("db.cfg")
 
 beta = cp.getfloat('iBeacon_config', "EWMA_Beta")
 scanInterval = cp.getint('iBeacon_config', 'scanInt')
-beacons =  cp.get('iBeacon_address', "beacons").split(',')
+beacons =  cp.get('iBeacon_address', "beacons").split(',\n')
 numOfBeacons = len(beacons)
+print(numOfBeacons)
 myRSSI = []
 for i in range(0,numOfBeacons):
     myRSSI.append(-100)
