@@ -48,9 +48,11 @@ def proximity(startTime, rssiTable, beaconInfos):
 	positionY = maxPositionY
     
     timeTag = round(time.time() - startTime, 2)
-    if debug == '1':
+    if debug == '2':
 		print('max and smax tag: ', maxTag, smaxTag)
 		print('max and smax position: ', maxPositionX, maxPositionY, smaxPositionX, smaxPositionY)
+		print('loc:', positionX, positionY,timeTag)
+    elif debug == '1':
 		print('loc:', positionX, positionY,timeTag)
         
     return positionX,positionY,timeTag

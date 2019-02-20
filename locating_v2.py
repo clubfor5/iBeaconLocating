@@ -2,17 +2,14 @@ from bluepy.btle import Scanner, DefaultDelegate
 import urllib3
 import time
 import json
-#import mythread
-import thread
 import operator
 import numpy as np
-import mtrClient as mtr
 import json
 import ConfigParser
 import sys
 import os
 import fp.fpGeneration as fpG
-import mtrClient as mtr
+import tcpClient.mtrClient as mtr
 import fp.fingerprint as finp
 import positioning.beaconAddress as beaconAdd
 import positioning.filters as flts
@@ -33,15 +30,17 @@ class ScanDelegate(DefaultDelegate):
             
     
 #=========#=====================#==========#======================#=========
-def beaconScanner():
+def beaconScanner(myRSSI):
     currentTime = time.time()
     collections = np.zeros(numOfBeacons)
     mask = np.zeros(numOfBeacons)
+    start = False
+    fPositionX = -100
     while True:
         global scanner
         devices = scanner.scan(0.57)
         # insert a time to timeout inside the squares. this returns a list with ALL bluetooth devices nearby (not only iBeacon).
-        RSSITable.getEWMAFilteredRSSI(devices, beaconAddress, mask, myRSSI)
+        myRSSI = RSSITable.getEWMAFilteredRSSI(devices, beaconAddress, mask, myRSSI)
         data = [{
         'Type': 'Raw',
         'mac': 'testMac',
@@ -55,17 +54,29 @@ def beaconScanner():
             className = finp.knnInitial_dimension(sample, fpTable, positionInfo, 3)
         elif method == 'proximity':
             positionX,positionY, timeTag = pos.proximity(startTime, myRSSI, beaconInfos)
-            speedDetector.pushLocation(timeTag, positionX)
-            speedDetector.speedCalculate()
+            if positionX > fPositionX:
+                speedDetector.pushLocation(timeTag, positionX)
+                fPositionX = positionX
+            else:
+                positionX = fPositionX
+                speedDetector.pushLocation(timeTag, fPositionX)
+            speed = speedDetector.speedCalculate()
+            rawDataLog = str(myRSSI) + '\n'
+            positionLog = str(timeTag) + ","+str(positionX) + ','
+            speedLog = str(speed) + '\n'
 
-
+            #myFile.writelines(rawDataLog)
+            myFile.writelines(positionLog)
+            myFile.writelines(speedLog)
+           # myFile.writelines('\n')
+            print(positionLog + speedLog)
 if __name__ == '__main__':
     #### load program information from db.cfg 
     cp = ConfigParser.ConfigParser()
     cp.read("config/db.cfg")
     method = cp.get('iBeacon_config', "locatingMethod")
     beta = cp.get('iBeacon_config','EWMA_Beta')
-    
+    myFile = open("log/dataLog " + time.asctime(time.localtime(time.time())) + ".txt", 'w')
     # load beacon informations 
     beaconAddress = []
     beaconInfos,numOfBeacons = beaconAdd.getBeaconInfo()
@@ -83,5 +94,6 @@ if __name__ == '__main__':
     #--defining the scan object--#
     startTime = time.time()
     scanner = Scanner().withDelegate(ScanDelegate())
+    
     speedDetector = speedDetector.SpeedDetector(15)
-    beaconScanner()
+    beaconScanner(myRSSI)

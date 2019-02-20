@@ -1,8 +1,9 @@
 import ConfigParser
-
+import filters as flts
 cp = ConfigParser.ConfigParser()
 cp.read("config/db.cfg")
 debug = cp.get('iBeacon_config', "rssiInfo")
+beta = float(cp.get('iBeacon_config', 'EWMA_Beta'))
 
 def getEWMAFilteredRSSI(devices, beaconAddress, mask, rssiTable):
         for i in range(len(mask)):
@@ -16,10 +17,10 @@ def getEWMAFilteredRSSI(devices, beaconAddress, mask, rssiTable):
                 index = beaconAddress.index(dev.addr)
                 mask[index]  = 0 
                 temp = flts.ewma(rssiTable[index], dev.rssi, beta)
-                rssiTable[index] = round(rssiTable[index],2)
+                rssiTable[index] = round(temp,2)
                 
         for i in range(len(mask)):
-            if mask[i] > 5:
+            if mask[i] > 8:
                 rssiTable[i] = -100
         
         if debug == '1':
