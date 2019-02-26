@@ -3,7 +3,7 @@ import time
 import ConfigParser
 
 cp = ConfigParser.ConfigParser()
-cp.read("config/db.cfg")
+cp.read("/home/pi/iBeaconLocating/config/db.cfg")
 debug = cp.get('iBeacon_config', "positionInfo")
 
 def proximity(startTime, rssiTable, beaconInfos):

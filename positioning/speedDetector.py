@@ -36,7 +36,7 @@ class SpeedDetector:
             self.sumP2 =  self.sumP2 + self.position[i] * self.position[i] 
             self.sumTP = self.sumTP + self.time[i] * self.position[i]
         #print(self.position)
-        speed = (float)(self.size * self.sumTP - self.sumT * self.sumP) / (float)(self.size* self.sumT2 - self.sumT * self.sumT)
+        speed = (float)(self.position[self.size-1] - self.position[0]) / (self.time[self.size -1] - self.time[0])
 
         if abs(speed) < 0.01:
             speed = 0

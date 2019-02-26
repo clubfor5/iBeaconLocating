@@ -1,7 +1,7 @@
 import ConfigParser
 import filters as flts
 cp = ConfigParser.ConfigParser()
-cp.read("config/db.cfg")
+cp.read("/home/pi/iBeaconLocating/config/db.cfg")
 debug = cp.get('iBeacon_config', "rssiInfo")
 beta = float(cp.get('iBeacon_config', 'EWMA_Beta'))
 
