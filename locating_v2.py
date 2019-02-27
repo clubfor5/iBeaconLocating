@@ -54,7 +54,7 @@ def beaconScanner(myRSSI):
         if preCounter < 5:
             positionBufferX[preCounter],positionBufferY[preCounter], timeTagBuffer[preCounter] =  pos.proximity(startTime, myRSSI, beaconInfos)
             preCounter = preCounter + 1
-            print ("log1")
+            #print ("log1")
             continue
         elif preCounter == 5:
             fPositionX = float (sum(positionBufferX) / len(positionBufferX))
@@ -80,7 +80,7 @@ def beaconScanner(myRSSI):
             [positionX, speed] = PID.posiFlter(positionX, timeTag)
             [positionX, speed] = PID.posiFlter(positionX, timeTag)
             #speed = speedDetector.speedCalculate()
-            print('current speed: ',speed)
+            #print('current speed: ',speed)
             if preCounter >= 5:
                 rawDataLog = str(myRSSI) + '\n'
                 positionLog = str(timeTag) + ","+str(positionX) + ','
@@ -89,12 +89,15 @@ def beaconScanner(myRSSI):
                 myFile.writelines(positionLog)
                 myFile.writelines(speedLog)
            # myFile.writelines('\n')
-                print(positionLog + speedLog)
-            if speed >= 2.0:
+                #print(positionLog + speedLog)
+                print ("time: ", round(timeTag,2)),
+                print ("position: ", round(positionX,2)),
+                print("speed: ", round(speed, 2))
+            if abs(speed) >= 1.8:
                 alarmCounter = alarmCounter + 1
             else:
                 alarmCounter = 0
-            if  alarmCounter >= 5:
+            if  alarmCounter >= 2:
                 thread.start_new_thread(alarm.alarm, ("alarm", 17))
                 
             

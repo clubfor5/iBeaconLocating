@@ -13,4 +13,4 @@ def alarm(threadName, pin):
 		time.sleep(0.1)
 	
 if __name__ == '__main__':	
-	alarm(17)
+	alarm("ok",17)
