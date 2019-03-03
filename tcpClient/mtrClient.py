@@ -8,8 +8,10 @@ class mtrClient:
         self.host = host
         self.port = port
         self.socket = socket(AF_INET, SOCK_STREAM)
+        self.socket.timeout = 3
         self.addr = (self.host, self.port)
         self.socket.connect(self.addr)
+     
         
     def sendData(self, data):
         #print(str(self.socket.recv(2048)))

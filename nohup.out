@@ -1,0 +1,67 @@
+Connecting to mtr Server... 
+failed to connect the server!
+
+
+
+
+('time: ', 2.42) ('position: ', -70.5) ('speed: ', 0.0)
+
+('time: ', 3.02) ('position: ', -70.5) ('speed: ', 0.0)
+
+('time: ', 3.62) ('position: ', -70.5) ('speed: ', 0.0)
+
+('time: ', 4.23) ('position: ', -70.5) ('speed: ', 0.0)
+
+('time: ', 4.83) ('position: ', -70.5) ('speed: ', 0.0)
+
+('time: ', 5.43) ('position: ', -70.5) ('speed: ', 0.0)
+
+('time: ', 6.04) ('position: ', -70.5) ('speed: ', 0.0)
+
+('time: ', 6.64) ('position: ', -70.5) ('speed: ', 0.0)
+
+('time: ', 7.25) ('position: ', -70.5) ('speed: ', 0.0)
+
+('time: ', 7.85) ('position: ', -70.5) ('speed: ', 0.0)
+
+('time: ', 8.45) ('position: ', -70.5) ('speed: ', 0.0)
+
+('time: ', 9.06) ('position: ', -70.5) ('speed: ', 0.0)
+
+('time: ', 9.66) ('position: ', -70.5) ('speed: ', 0.0)
+
+('time: ', 10.26) ('position: ', -70.5) ('speed: ', 0.0)
+
+('time: ', 10.87) ('position: ', -70.5) ('speed: ', 0.0)
+
+('time: ', 11.47) ('position: ', -70.5) ('speed: ', 0.0)
+
+('time: ', 12.07) ('position: ', -70.5) ('speed: ', 0.0)
+
+('time: ', 12.68) ('position: ', -70.5) ('speed: ', 0.0)
+
+('time: ', 13.28) ('position: ', -70.5) ('speed: ', 0.0)
+
+('time: ', 13.88) ('position: ', -70.5) ('speed: ', 0.0)
+
+('time: ', 14.49) ('position: ', -70.5) ('speed: ', 0.0)
+
+('time: ', 15.09) ('position: ', -70.5) ('speed: ', 0.0)
+
+('time: ', 15.69) ('position: ', -70.5) ('speed: ', 0.0)
+
+('time: ', 16.29) ('position: ', -70.5) ('speed: ', 0.0)
+
+('time: ', 16.9) ('position: ', -70.5) ('speed: ', 0.0)
+Traceback (most recent call last):
+  File "locating_v2.py", line 125, in <module>
+    mtr_service(myRSSI)
+  File "locating_v2.py", line 52, in mtr_service
+    devices = scanner.scan(0.57)
+  File "/home/pi/iBeaconLocating/bluepy/btle.py", line 853, in scan
+    self.process(timeout)
+  File "/home/pi/iBeaconLocating/bluepy/btle.py", line 821, in process
+    resp = self._waitResp(['scan', 'stat'], remain)
+  File "/home/pi/iBeaconLocating/bluepy/btle.py", line 342, in _waitResp
+    fds = self._poller.poll(timeout*1000)
+KeyboardInterrupt

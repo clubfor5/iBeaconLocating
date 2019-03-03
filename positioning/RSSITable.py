@@ -22,14 +22,15 @@ def getEWMAFilteredRSSI(devices, beaconAddress, mask, rssiTable):
                 temp = flts.ewma(rssiTable[index], dev.rssi, beta)
                 rssiTable[index] = round(temp,2)
                 buffer[index] = dev.rssi
-            data = [{
+                
+        data = [{
                 'Type': 'Raw',
                 'mac': 'testMac',
                 'ts': int(time.time()),
                 'rssi': buffer,
                 'remark': 'Mtrtest',
             }]
-            rawDataFile.writelines(json.dumps(data) + '\n')
+        rawDataFile.writelines(json.dumps(data) + '\n')
         for i in range(len(mask)):
             if mask[i] > 8:
                 rssiTable[i] = -100
