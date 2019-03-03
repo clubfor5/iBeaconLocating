@@ -1,5 +1,4 @@
 from bluepy.btle import Scanner, DefaultDelegate
-import urllib3
 import time
 import json
 import operator
@@ -14,7 +13,7 @@ import positioning.beaconAddress as beaconAdd
 import positioning.filters as flts
 import positioning.speedDetector as speedDetector
 import positioning.position as pos
-import positioning.kalman as kalm
+#import positioning.kalman as kalm
 import alarm
 
 #myClient = mtr.mtrClient()
