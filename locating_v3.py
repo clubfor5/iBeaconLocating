@@ -20,7 +20,7 @@ import alarm
 import positioning.RSSITable as RSSITable
 import positioning.purePI_ctlersp as purePI
 debug = True
-
+alarmCounter = 0
 class ScanDelegate(DefaultDelegate):
     def __init__(self):
         DefaultDelegate.__init__(self)		
@@ -62,16 +62,18 @@ def mtr_service(myRSSI):
 
         if method == "proximity":
             positionX,positionY, timeTag = pos.proximity(startTime, myRSSI, beaconInfos)
-            [positionX, speed] = PID.posiFlter(positionX, timeTag)
+            [positionXX, speed] = PID.posiFlter(positionX, timeTag)
             if preCounter >= 3:
-                positionLog = str(timeTag) + ","+str(positionX) + ','
+                positionLog = str(timeTag) + ","+str(positionXX) + ','
+                orginLog = str(timeTag) + ","+str(positionX) + ','
                 speedLog = str(speed) + '\n'
-                myFile.writelines(positionLog)
+                myFile.writelines(positionLog+orginLog)
                 myFile.writelines(speedLog)
                 print ("time: ", round(timeTag,2)),
-                print ("position: ", round(positionX,2)),
+                print ("position: ", round(positionXX,2)),
+                print("oringin:",round(positionX,2))
                 print("speed: ", round(speed, 2))
-                
+                #positionX = positionXX
                 data = {
                 'target': 'A',
                 'ts': round(timeTag,2),
@@ -79,13 +81,18 @@ def mtr_service(myRSSI):
                 'loc_y': round(positionY, 2),
                 'val': round(speed, 2)
             }
-            
             if mtr_server_state == True:
                 myClient.send(data)
-            
-            mtr_alarm(speed)
-            
-        ###################### alarm #########################
+
+            if abs(speed) >= alarmSpeed:
+                alarmCounter = alarmCounter + 1
+            else:
+                alarmCounter = 0
+                
+            if alarmCounter >= alarmThreshold:
+                thread.start_new_thread(alarm.alarm, ("alarm", 17))
+
+                ###################### alarm #########################
            
                 
             
