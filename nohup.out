@@ -65,3 +65,666 @@ Traceback (most recent call last):
   File "/home/pi/iBeaconLocating/bluepy/btle.py", line 342, in _waitResp
     fds = self._poller.poll(timeout*1000)
 KeyboardInterrupt
+Connecting to mtr Server... 
+
+
+('time: ', 2.53) ('position: ', -6.19) ('speed: ', 0.05)
+('time: ', 3.19) ('position: ', -8.22) ('speed: ', -0.15)
+('time: ', 3.83) ('position: ', -8.55) ('speed: ', -0.07)
+
+('time: ', 4.46) ('position: ', -5.87) ('speed: ', 0.06)
+('time: ', 5.09) ('position: ', -5.22) ('speed: ', 0.34)
+
+('time: ', 5.73) ('position: ', -5.67) ('speed: ', 0.24)
+('time: ', 6.36) ('position: ', -3.83) ('speed: ', 0.25)
+
+('time: ', 6.99) ('position: ', -1.26) ('speed: ', 0.62)
+
+('time: ', 7.63) ('position: ', 0.2) ('speed: ', 0.79)
+('time: ', 8.26) ('position: ', -2.45) ('speed: ', 0.2)
+('time: ', 8.9) ('position: ', -0.26) ('speed: ', 0.55)
+
+('time: ', 9.53) ('position: ', -0.26) ('speed: ', 0.26)
+('time: ', 10.16) ('position: ', 0.29) ('speed: ', 0.76)
+
+('time: ', 10.79) ('position: ', 2.77) ('speed: ', 0.62)
+
+('time: ', 11.43) ('position: ', 3.7) ('speed: ', 0.82)
+('time: ', 12.06) ('position: ', 2.91) ('speed: ', 0.67)
+('time: ', 12.69) ('position: ', 3.36) ('speed: ', 0.51)
+
+('time: ', 13.32) ('position: ', 3.28) ('speed: ', 0.49)
+('time: ', 13.95) ('position: ', 3.41) ('speed: ', 0.59)
+('time: ', 14.59) ('position: ', -0.16) ('speed: ', -0.06)
+('time: ', 15.22) ('position: ', -1.04) ('speed: ', 0.05)
+('time: ', 15.85) ('position: ', 1.06) ('speed: ', 0.17)
+('time: ', 16.49) ('position: ', 0.9) ('speed: ', 0.38)
+
+('time: ', 17.12) ('position: ', 1.87) ('speed: ', 0.49)
+
+('time: ', 17.75) ('position: ', 2.77) ('speed: ', 0.31)
+
+('time: ', 18.39) ('position: ', 3.45) ('speed: ', 0.58)
+('time: ', 19.02) ('position: ', 4.11) ('speed: ', 0.48)
+('time: ', 19.65) ('position: ', 3.88) ('speed: ', 0.4)
+('time: ', 20.28) ('position: ', 5.0) ('speed: ', 0.56)
+
+('time: ', 20.91) ('position: ', 4.74) ('speed: ', 0.37)
+
+('time: ', 21.54) ('position: ', 2.45) ('speed: ', 0.17)
+
+('time: ', 22.17) ('position: ', 4.54) ('speed: ', 0.39)
+
+('time: ', 22.81) ('position: ', 4.65) ('speed: ', 0.28)
+('time: ', 23.44) ('position: ', 5.36) ('speed: ', 0.67)
+('time: ', 24.08) ('position: ', 4.66) ('speed: ', 0.14)
+('time: ', 24.71) ('position: ', 4.83) ('speed: ', 0.39)
+
+('time: ', 25.35) ('position: ', 4.29) ('speed: ', 0.16)
+
+('time: ', 25.98) ('position: ', 5.07) ('speed: ', 0.38)
+('time: ', 26.61) ('position: ', 4.51) ('speed: ', 0.18)
+('time: ', 27.24) ('position: ', 4.47) ('speed: ', 0.29)
+('time: ', 27.88) ('position: ', 3.74) ('speed: ', 0.04)
+
+('time: ', 28.51) ('position: ', 3.85) ('speed: ', 0.19)
+
+('time: ', 29.14) ('position: ', 3.55) ('speed: ', 0.06)
+
+('time: ', 29.78) ('position: ', -0.88) ('speed: ', -0.46)
+
+('time: ', 30.41) ('position: ', -2.18) ('speed: ', -0.49)
+('time: ', 31.05) ('position: ', 1.29) ('speed: ', -0.1)
+('time: ', 31.68) ('position: ', 1.21) ('speed: ', 0.14)
+
+('time: ', 32.31) ('position: ', 1.57) ('speed: ', 0.22)
+
+('time: ', 32.95) ('position: ', 1.92) ('speed: ', -0.14)
+
+('time: ', 33.58) ('position: ', 2.22) ('speed: ', 0.18)
+
+('time: ', 34.22) ('position: ', 2.5) ('speed: ', 0.08)
+('time: ', 34.85) ('position: ', 2.02) ('speed: ', -0.01)
+('time: ', 35.48) ('position: ', 2.6) ('speed: ', 0.12)
+('time: ', 36.12) ('position: ', 2.58) ('speed: ', 0.03)
+('time: ', 36.75) ('position: ', 3.87) ('speed: ', 0.3)
+('time: ', 37.38) ('position: ', 3.16) ('speed: ', 0.04)
+('time: ', 38.02) ('position: ', 3.54) ('speed: ', 0.22)
+
+('time: ', 38.65) ('position: ', 4.01) ('speed: ', 0.08)
+('time: ', 39.29) ('position: ', 5.87) ('speed: ', 0.48)
+
+('time: ', 39.92) ('position: ', 6.05) ('speed: ', 0.33)
+('time: ', 40.56) ('position: ', 6.69) ('speed: ', 0.45)
+
+('time: ', 41.2) ('position: ', 7.39) ('speed: ', 0.35)
+
+('time: ', 41.83) ('position: ', 7.92) ('speed: ', 0.48)
+('time: ', 42.46) ('position: ', 7.08) ('speed: ', 0.27)
+
+('time: ', 43.09) ('position: ', 6.9) ('speed: ', 0.25)
+('time: ', 43.73) ('position: ', 8.72) ('speed: ', 0.44)
+('time: ', 44.36) ('position: ', 9.06) ('speed: ', 0.48)
+('time: ', 44.99) ('position: ', 9.91) ('speed: ', 0.61)
+('time: ', 45.63) ('position: ', 10.44) ('speed: ', 0.44)
+
+('time: ', 46.26) ('position: ', 12.1) ('speed: ', 0.75)
+('time: ', 46.9) ('position: ', 10.71) ('speed: ', 0.37)
+('time: ', 47.54) ('position: ', 14.37) ('speed: ', 0.97)
+('time: ', 48.17) ('position: ', 11.67) ('speed: ', 0.18)
+('time: ', 48.8) ('position: ', 12.44) ('speed: ', 0.81)
+
+('time: ', 49.44) ('position: ', 14.51) ('speed: ', 0.39)
+('time: ', 50.07) ('position: ', 14.67) ('speed: ', 0.87)
+
+('time: ', 50.71) ('position: ', 15.64) ('speed: ', 0.76)
+('time: ', 51.35) ('position: ', 16.17) ('speed: ', 0.59)
+('time: ', 51.99) ('position: ', 17.87) ('speed: ', 0.97)
+
+('time: ', 52.62) ('position: ', 19.19) ('speed: ', 0.89)
+('time: ', 53.25) ('position: ', 19.81) ('speed: ', 0.96)
+('time: ', 53.89) ('position: ', 20.72) ('speed: ', 0.92)
+('time: ', 54.52) ('position: ', 21.4) ('speed: ', 0.9)
+('time: ', 55.16) ('position: ', 22.34) ('speed: ', 1.0)
+('time: ', 55.79) ('position: ', 22.72) ('speed: ', 0.9)
+('time: ', 56.42) ('position: ', 23.59) ('speed: ', 0.98)
+('time: ', 57.06) ('position: ', 24.9) ('speed: ', 1.02)
+('time: ', 57.69) ('position: ', 25.69) ('speed: ', 1.07)
+('time: ', 58.33) ('position: ', 26.56) ('speed: ', 1.08)
+
+('time: ', 58.96) ('position: ', 26.19) ('speed: ', 0.88)
+
+('time: ', 59.59) ('position: ', 26.58) ('speed: ', 0.93)
+('time: ', 60.23) ('position: ', 27.72) ('speed: ', 0.93)
+
+('time: ', 60.86) ('position: ', 28.17) ('speed: ', 1.0)
+
+('time: ', 61.49) ('position: ', 28.82) ('speed: ', 1.0)
+
+('time: ', 62.13) ('position: ', 30.92) ('speed: ', 1.13)
+('time: ', 62.77) ('position: ', 31.02) ('speed: ', 1.05)
+('time: ', 63.4) ('position: ', 32.3) ('speed: ', 1.2)
+
+('time: ', 64.03) ('position: ', 34.52) ('speed: ', 1.21)
+
+('time: ', 64.67) ('position: ', 33.56) ('speed: ', 1.09)
+('time: ', 65.3) ('position: ', 34.94) ('speed: ', 1.21)
+
+('time: ', 65.93) ('position: ', 34.59) ('speed: ', 0.82)
+
+('time: ', 66.57) ('position: ', 35.06) ('speed: ', 1.16)
+('time: ', 67.2) ('position: ', 34.62) ('speed: ', 0.74)
+('time: ', 67.84) ('position: ', 34.7) ('speed: ', 0.9)
+('time: ', 68.47) ('position: ', 34.57) ('speed: ', 0.73)
+
+('time: ', 69.1) ('position: ', 35.08) ('speed: ', 0.83)
+('time: ', 69.74) ('position: ', 34.62) ('speed: ', 0.67)
+('time: ', 70.37) ('position: ', 34.7) ('speed: ', 0.71)
+('time: ', 71.01) ('position: ', 32.41) ('speed: ', 0.27)
+('time: ', 71.64) ('position: ', 32.08) ('speed: ', 0.39)
+('time: ', 72.27) ('position: ', 31.81) ('speed: ', 0.19)
+('time: ', 72.91) ('position: ', 31.65) ('speed: ', 0.41)
+('time: ', 73.54) ('position: ', 30.87) ('speed: ', 0.17)
+('time: ', 74.17) ('position: ', 30.82) ('speed: ', 0.22)
+
+('time: ', 74.8) ('position: ', 29.9) ('speed: ', 0.06)
+('time: ', 75.44) ('position: ', 30.1) ('speed: ', 0.18)
+
+('time: ', 76.07) ('position: ', 29.19) ('speed: ', -0.04)
+('time: ', 76.71) ('position: ', 28.4) ('speed: ', 0.01)
+('time: ', 77.34) ('position: ', 27.8) ('speed: ', -0.16)
+('time: ', 77.98) ('position: ', 26.94) ('speed: ', -0.16)
+('time: ', 78.61) ('position: ', 26.63) ('speed: ', -0.16)
+('time: ', 79.24) ('position: ', 26.1) ('speed: ', -0.23)
+('time: ', 79.87) ('position: ', 23.56) ('speed: ', -0.49)
+('time: ', 80.5) ('position: ', 21.26) ('speed: ', -0.71)
+('time: ', 81.14) ('position: ', 19.49) ('speed: ', -0.89)
+('time: ', 81.78) ('position: ', 20.21) ('speed: ', -0.54)
+('time: ', 82.41) ('position: ', 19.35) ('speed: ', -0.65)
+
+('time: ', 83.04) ('position: ', 18.66) ('speed: ', -0.55)
+
+('time: ', 83.68) ('position: ', 18.13) ('speed: ', -0.75)
+
+('time: ', 84.31) ('position: ', 16.53) ('speed: ', -0.78)
+('time: ', 84.94) ('position: ', 17.41) ('speed: ', -0.57)
+('time: ', 85.58) ('position: ', 16.88) ('speed: ', -0.71)
+('time: ', 86.21) ('position: ', 16.96) ('speed: ', -0.43)
+
+('time: ', 86.85) ('position: ', 16.8) ('speed: ', -0.66)
+('time: ', 87.48) ('position: ', 16.74) ('speed: ', -0.48)
+
+('time: ', 88.12) ('position: ', 15.04) ('speed: ', -0.74)
+('time: ', 88.75) ('position: ', 14.01) ('speed: ', -0.76)
+('time: ', 89.38) ('position: ', 12.81) ('speed: ', -0.92)
+('time: ', 90.01) ('position: ', 11.89) ('speed: ', -0.83)
+('time: ', 90.65) ('position: ', 10.45) ('speed: ', -0.99)
+
+('time: ', 91.28) ('position: ', 9.88) ('speed: ', -0.91)
+
+('time: ', 91.92) ('position: ', 8.99) ('speed: ', -0.98)
+
+('time: ', 92.55) ('position: ', 8.34) ('speed: ', -0.9)
+('time: ', 93.18) ('position: ', 7.34) ('speed: ', -1.02)
+('time: ', 93.81) ('position: ', 7.41) ('speed: ', -0.86)
+('time: ', 94.45) ('position: ', 6.9) ('speed: ', -0.91)
+('time: ', 95.08) ('position: ', 2.0) ('speed: ', -1.44)
+('time: ', 95.71) ('position: ', 0.47) ('speed: ', -1.44)
+
+('time: ', 96.34) ('position: ', -0.3) ('speed: ', -1.58)
+('time: ', 96.98) ('position: ', -0.93) ('speed: ', -1.13)
+('time: ', 97.61) ('position: ', -3.4) ('speed: ', -1.57)
+
+('time: ', 98.24) ('position: ', -3.46) ('speed: ', -1.34)
+('time: ', 98.87) ('position: ', -3.91) ('speed: ', -1.39)
+('time: ', 99.51) ('position: ', -5.76) ('speed: ', -1.35)
+
+('time: ', 100.14) ('position: ', -5.78) ('speed: ', -1.35)
+('time: ', 100.78) ('position: ', -7.36) ('speed: ', -1.5)
+('time: ', 101.41) ('position: ', -7.98) ('speed: ', -1.26)
+
+('time: ', 102.04) ('position: ', -8.15) ('speed: ', -1.39)
+
+('time: ', 102.67) ('position: ', -9.89) ('speed: ', -1.37)
+('time: ', 103.32) ('position: ', -9.98) ('speed: ', -1.27)
+('time: ', 103.95) ('position: ', -10.79) ('speed: ', -1.41)
+('time: ', 104.58) ('position: ', -11.21) ('speed: ', -1.16)
+
+('time: ', 105.21) ('position: ', -12.26) ('speed: ', -1.38)
+('time: ', 105.85) ('position: ', -13.35) ('speed: ', -1.32)
+('time: ', 106.48) ('position: ', -14.16) ('speed: ', -1.36)
+('time: ', 107.12) ('position: ', -14.96) ('speed: ', -1.33)
+('time: ', 107.75) ('position: ', -15.64) ('speed: ', -1.29)
+('time: ', 108.38) ('position: ', -16.28) ('speed: ', -1.29)
+('time: ', 109.02) ('position: ', -16.84) ('speed: ', -1.25)
+('time: ', 109.65) ('position: ', -20.59) ('speed: ', -1.67)
+('time: ', 110.29) ('position: ', -18.67) ('speed: ', -1.15)
+
+('time: ', 110.92) ('position: ', -20.39) ('speed: ', -1.56)
+('time: ', 111.56) ('position: ', -20.94) ('speed: ', -1.01)
+('time: ', 112.19) ('position: ', -21.72) ('speed: ', -1.56)
+
+('time: ', 112.82) ('position: ', -24.47) ('speed: ', -1.48)
+
+('time: ', 113.45) ('position: ', -22.92) ('speed: ', -1.18)
+('time: ', 114.09) ('position: ', -24.33) ('speed: ', -1.47)
+('time: ', 114.72) ('position: ', -24.31) ('speed: ', -0.96)
+('time: ', 115.35) ('position: ', -24.84) ('speed: ', -1.4)
+('time: ', 115.99) ('position: ', -24.81) ('speed: ', -1.0)
+('time: ', 116.62) ('position: ', -25.33) ('speed: ', -1.15)
+('time: ', 117.25) ('position: ', -25.51) ('speed: ', -1.04)
+('time: ', 117.88) ('position: ', -24.71) ('speed: ', -0.89)
+('time: ', 118.51) ('position: ', -24.63) ('speed: ', -0.83)
+('time: ', 119.15) ('position: ', -24.29) ('speed: ', -0.71)
+('time: ', 119.78) ('position: ', -23.83) ('speed: ', -0.71)
+('time: ', 120.42) ('position: ', -23.53) ('speed: ', -0.59)
+('time: ', 121.05) ('position: ', -22.68) ('speed: ', -0.48)
+('time: ', 121.68) ('position: ', -22.27) ('speed: ', -0.45)
+('time: ', 122.31) ('position: ', -21.49) ('speed: ', -0.29)
+
+('time: ', 122.95) ('position: ', -21.55) ('speed: ', -0.39)
+('time: ', 123.58) ('position: ', -20.63) ('speed: ', -0.19)
+('time: ', 124.21) ('position: ', -20.6) ('speed: ', -0.29)
+('time: ', 124.84) ('position: ', -20.18) ('speed: ', -0.13)
+('time: ', 125.48) ('position: ', -19.33) ('speed: ', -0.13)
+('time: ', 126.11) ('position: ', -18.9) ('speed: ', -0.03)
+('time: ', 126.74) ('position: ', -17.65) ('speed: ', 0.11)
+('time: ', 127.38) ('position: ', -16.69) ('speed: ', 0.14)
+('time: ', 128.01) ('position: ', -15.83) ('speed: ', 0.28)
+('time: ', 128.65) ('position: ', -16.49) ('speed: ', 0.05)
+('time: ', 129.28) ('position: ', -16.18) ('speed: ', 0.13)
+
+('time: ', 129.91) ('position: ', -15.55) ('speed: ', 0.12)
+('time: ', 130.55) ('position: ', -12.14) ('speed: ', 0.68)
+('time: ', 131.18) ('position: ', -11.93) ('speed: ', 0.47)
+
+('time: ', 131.81) ('position: ', -11.06) ('speed: ', 0.68)
+('time: ', 132.45) ('position: ', -11.12) ('speed: ', 0.29)
+
+('time: ', 133.08) ('position: ', -10.66) ('speed: ', 0.56)
+
+('time: ', 133.72) ('position: ', -10.46) ('speed: ', 0.4)
+('time: ', 134.35) ('position: ', -10.55) ('speed: ', 0.42)
+('time: ', 134.99) ('position: ', -10.08) ('speed: ', 0.43)
+
+('time: ', 135.62) ('position: ', -8.16) ('speed: ', 0.64)
+
+('time: ', 136.25) ('position: ', -7.45) ('speed: ', 0.67)
+
+('time: ', 136.89) ('position: ', -7.48) ('speed: ', 0.63)
+
+('time: ', 137.52) ('position: ', -5.9) ('speed: ', 0.68)
+('time: ', 138.16) ('position: ', -5.56) ('speed: ', 0.66)
+('time: ', 138.79) ('position: ', -4.23) ('speed: ', 0.89)
+('time: ', 139.42) ('position: ', -3.58) ('speed: ', 0.7)
+
+('time: ', 140.06) ('position: ', -3.12) ('speed: ', 0.84)
+('time: ', 140.69) ('position: ', -4.37) ('speed: ', 0.48)
+('time: ', 141.32) ('position: ', -4.41) ('speed: ', 0.53)
+
+('time: ', 141.95) ('position: ', -5.62) ('speed: ', 0.25)
+
+('time: ', 142.59) ('position: ', -6.78) ('speed: ', 0.27)
+
+('time: ', 143.22) ('position: ', -4.76) ('speed: ', 0.45)
+
+('time: ', 143.85) ('position: ', -4.85) ('speed: ', 0.42)
+
+('time: ', 144.49) ('position: ', -7.02) ('speed: ', 0.26)
+('time: ', 145.12) ('position: ', -4.58) ('speed: ', 0.39)
+
+('time: ', 145.75) ('position: ', -4.85) ('speed: ', 0.29)
+
+('time: ', 146.38) ('position: ', -6.95) ('speed: ', 0.3)
+('time: ', 147.02) ('position: ', -3.83) ('speed: ', 0.38)
+('time: ', 147.65) ('position: ', -6.06) ('speed: ', 0.05)
+('time: ', 148.28) ('position: ', -5.5) ('speed: ', 0.55)
+('time: ', 148.91) ('position: ', -2.82) ('speed: ', 0.27)
+('time: ', 149.55) ('position: ', -2.03) ('speed: ', 0.77)
+('time: ', 150.18) ('position: ', -0.64) ('speed: ', 0.77)
+
+('time: ', 150.81) ('position: ', -1.47) ('speed: ', 0.35)
+
+('time: ', 151.44) ('position: ', 1.93) ('speed: ', 1.02)
+
+('time: ', 152.08) ('position: ', 2.63) ('speed: ', 0.7)
+('time: ', 152.71) ('position: ', 3.43) ('speed: ', 1.08)
+('time: ', 153.35) ('position: ', 4.26) ('speed: ', 0.71)
+('time: ', 153.98) ('position: ', 3.61) ('speed: ', 0.72)
+('time: ', 154.62) ('position: ', 3.91) ('speed: ', 0.71)
+('time: ', 155.25) ('position: ', 3.81) ('speed: ', 0.54)
+('time: ', 155.88) ('position: ', 3.87) ('speed: ', 0.67)
+
+('time: ', 156.52) ('position: ', 4.41) ('speed: ', 0.61)
+
+('time: ', 157.15) ('position: ', 4.21) ('speed: ', 0.57)
+('time: ', 157.78) ('position: ', 4.22) ('speed: ', 0.56)
+('time: ', 158.41) ('position: ', 4.18) ('speed: ', 0.46)
+('time: ', 159.05) ('position: ', 4.17) ('speed: ', 0.49)
+('time: ', 159.68) ('position: ', 4.15) ('speed: ', 0.44)
+('time: ', 160.32) ('position: ', 4.41) ('speed: ', 0.46)
+('time: ', 160.96) ('position: ', 4.19) ('speed: ', 0.4)
+
+('time: ', 161.59) ('position: ', 4.25) ('speed: ', 0.4)
+('time: ', 162.22) ('position: ', 4.19) ('speed: ', 0.33)
+
+('time: ', 162.85) ('position: ', 3.83) ('speed: ', 0.31)
+('time: ', 163.49) ('position: ', 3.35) ('speed: ', 0.22)
+('time: ', 164.12) ('position: ', 3.06) ('speed: ', 0.18)
+('time: ', 164.76) ('position: ', 3.46) ('speed: ', 0.25)
+('time: ', 165.4) ('position: ', 2.84) ('speed: ', 0.15)
+('time: ', 166.03) ('position: ', 2.82) ('speed: ', 0.19)
+('time: ', 166.67) ('position: ', 3.11) ('speed: ', 0.14)
+
+('time: ', 167.3) ('position: ', 3.31) ('speed: ', 0.24)
+('time: ', 167.93) ('position: ', 4.1) ('speed: ', 0.3)
+('time: ', 168.57) ('position: ', 4.42) ('speed: ', 0.28)
+('time: ', 169.2) ('position: ', 5.14) ('speed: ', 0.39)
+('time: ', 169.83) ('position: ', 5.82) ('speed: ', 0.37)
+('time: ', 170.47) ('position: ', 6.36) ('speed: ', 0.44)
+('time: ', 171.1) ('position: ', 6.61) ('speed: ', 0.4)
+('time: ', 171.74) ('position: ', 7.26) ('speed: ', 0.44)
+
+('time: ', 172.37) ('position: ', 7.88) ('speed: ', 0.47)
+
+('time: ', 173.01) ('position: ', 9.45) ('speed: ', 0.65)
+
+('time: ', 173.64) ('position: ', 10.2) ('speed: ', 0.63)
+
+('time: ', 174.28) ('position: ', 11.15) ('speed: ', 0.74)
+('time: ', 174.91) ('position: ', 11.36) ('speed: ', 0.59)
+('time: ', 175.54) ('position: ', 11.93) ('speed: ', 0.68)
+
+('time: ', 176.18) ('position: ', 12.28) ('speed: ', 0.6)
+('time: ', 176.81) ('position: ', 14.83) ('speed: ', 0.95)
+
+('time: ', 177.45) ('position: ', 12.48) ('speed: ', 0.43)
+
+('time: ', 178.08) ('position: ', 13.01) ('speed: ', 0.69)
+
+('time: ', 178.72) ('position: ', 15.09) ('speed: ', 0.55)
+
+('time: ', 179.35) ('position: ', 15.7) ('speed: ', 0.94)
+
+('time: ', 179.99) ('position: ', 14.08) ('speed: ', 0.5)
+('time: ', 180.62) ('position: ', 17.35) ('speed: ', 0.87)
+
+('time: ', 181.26) ('position: ', 17.62) ('speed: ', 0.72)
+('time: ', 181.89) ('position: ', 18.97) ('speed: ', 1.17)
+('time: ', 182.52) ('position: ', 19.73) ('speed: ', 0.71)
+('time: ', 183.16) ('position: ', 20.61) ('speed: ', 1.04)
+('time: ', 183.79) ('position: ', 21.32) ('speed: ', 0.9)
+('time: ', 184.43) ('position: ', 21.99) ('speed: ', 0.93)
+('time: ', 185.06) ('position: ', 23.66) ('speed: ', 1.09)
+('time: ', 185.7) ('position: ', 24.48) ('speed: ', 1.05)
+('time: ', 186.33) ('position: ', 25.51) ('speed: ', 1.15)
+('time: ', 186.97) ('position: ', 26.31) ('speed: ', 1.04)
+('time: ', 187.6) ('position: ', 27.09) ('speed: ', 1.12)
+('time: ', 188.23) ('position: ', 27.77) ('speed: ', 1.07)
+('time: ', 188.86) ('position: ', 29.47) ('speed: ', 1.22)
+('time: ', 189.5) ('position: ', 30.31) ('speed: ', 1.19)
+('time: ', 190.13) ('position: ', 31.35) ('speed: ', 1.28)
+('time: ', 190.76) ('position: ', 32.17) ('speed: ', 1.17)
+('time: ', 191.4) ('position: ', 32.96) ('speed: ', 1.24)
+('time: ', 192.03) ('position: ', 33.65) ('speed: ', 1.19)
+('time: ', 192.66) ('position: ', 34.28) ('speed: ', 1.18)
+('time: ', 193.3) ('position: ', 35.12) ('speed: ', 1.2)
+('time: ', 193.93) ('position: ', 35.7) ('speed: ', 1.17)
+('time: ', 194.57) ('position: ', 36.29) ('speed: ', 1.17)
+('time: ', 195.2) ('position: ', 36.53) ('speed: ', 1.08)
+('time: ', 195.83) ('position: ', 36.93) ('speed: ', 1.08)
+('time: ', 196.46) ('position: ', 37.21) ('speed: ', 1.01)
+
+('time: ', 197.1) ('position: ', 39.12) ('speed: ', 1.23)
+('time: ', 197.73) ('position: ', 40.33) ('speed: ', 1.23)
+('time: ', 198.36) ('position: ', 41.51) ('speed: ', 1.36)
+('time: ', 198.99) ('position: ', 42.54) ('speed: ', 1.25)
+('time: ', 199.63) ('position: ', 43.48) ('speed: ', 1.31)
+
+('time: ', 200.26) ('position: ', 46.48) ('speed: ', 1.58)
+('time: ', 200.89) ('position: ', 46.73) ('speed: ', 1.39)
+
+('time: ', 201.53) ('position: ', 47.68) ('speed: ', 1.53)
+('time: ', 202.16) ('position: ', 48.89) ('speed: ', 1.31)
+('time: ', 202.79) ('position: ', 49.71) ('speed: ', 1.5)
+('time: ', 203.42) ('position: ', 50.56) ('speed: ', 1.43)
+('time: ', 204.06) ('position: ', 51.29) ('speed: ', 1.37)
+('time: ', 204.69) ('position: ', 52.23) ('speed: ', 1.43)
+('time: ', 205.33) ('position: ', 52.89) ('speed: ', 1.36)
+('time: ', 205.96) ('position: ', 54.38) ('speed: ', 1.48)
+('time: ', 206.59) ('position: ', 55.17) ('speed: ', 1.42)
+('time: ', 207.22) ('position: ', 56.11) ('speed: ', 1.49)
+('time: ', 207.85) ('position: ', 57.14) ('speed: ', 1.42)
+('time: ', 208.48) ('position: ', 57.92) ('speed: ', 1.45)
+
+('time: ', 209.12) ('position: ', 58.96) ('speed: ', 1.46)
+
+('time: ', 209.75) ('position: ', 59.7) ('speed: ', 1.41)
+('time: ', 210.38) ('position: ', 60.99) ('speed: ', 1.5)
+('time: ', 211.01) ('position: ', 61.77) ('speed: ', 1.43)
+('time: ', 211.64) ('position: ', 62.63) ('speed: ', 1.48)
+('time: ', 212.28) ('position: ', 63.34) ('speed: ', 1.39)
+('time: ', 212.91) ('position: ', 64.01) ('speed: ', 1.4)
+('time: ', 213.54) ('position: ', 64.6) ('speed: ', 1.35)
+
+('time: ', 214.18) ('position: ', 69.18) ('speed: ', 1.88)
+Traceback (most recent call last):
+  File "locating_v2.py", line 125, in <module>
+    mtr_service(myRSSI)
+  File "locating_v2.py", line 86, in mtr_service
+    mtr_alarm(speed)
+  File "locating_v2.py", line 33, in mtr_alarm
+    alarmCounter = alarmCounter + 1
+UnboundLocalError: local variable 'alarmCounter' referenced before assignment
+Connecting to mtr Server... 
+
+
+
+('time: ', 2.53) ('position: ', -29.24) ('speed: ', 0.16)
+
+('time: ', 3.17) ('position: ', -28.28) ('speed: ', 0.15)
+
+('time: ', 3.8) ('position: ', -27.34) ('speed: ', 0.22)
+
+('time: ', 4.43) ('position: ', -26.53) ('speed: ', 0.39)
+
+('time: ', 5.06) ('position: ', -25.78) ('speed: ', 0.34)
+
+('time: ', 5.7) ('position: ', -25.11) ('speed: ', 0.39)
+
+('time: ', 6.34) ('position: ', -21.08) ('speed: ', 0.89)
+
+('time: ', 6.98) ('position: ', -19.63) ('speed: ', 0.85)
+
+('time: ', 7.61) ('position: ', -20.31) ('speed: ', 0.82)
+('time: ', 8.25) ('position: ', -19.45) ('speed: ', 0.59)
+('time: ', 8.89) ('position: ', -16.23) ('speed: ', 1.02)
+('time: ', 9.52) ('position: ', -15.2) ('speed: ', 1.11)
+('time: ', 10.16) ('position: ', -13.46) ('speed: ', 1.23)
+
+('time: ', 10.79) ('position: ', -10.42) ('speed: ', 1.3)
+('time: ', 11.42) ('position: ', -9.15) ('speed: ', 1.44)
+('time: ', 12.06) ('position: ', -7.92) ('speed: ', 1.44)
+('time: ', 12.7) ('position: ', -6.71) ('speed: ', 1.31)
+('time: ', 13.33) ('position: ', -5.66) ('speed: ', 1.43)
+('time: ', 13.96) ('position: ', -4.88) ('speed: ', 1.37)
+('time: ', 14.6) ('position: ', -3.89) ('speed: ', 1.37)
+('time: ', 15.24) ('position: ', -3.34) ('speed: ', 1.33)
+('time: ', 15.87) ('position: ', -2.66) ('speed: ', 1.33)
+('time: ', 16.51) ('position: ', -0.86) ('speed: ', 1.43)
+
+('time: ', 17.14) ('position: ', -3.25) ('speed: ', 0.97)
+
+('time: ', 17.78) ('position: ', -0.86) ('speed: ', 1.39)
+
+('time: ', 18.41) ('position: ', -1.07) ('speed: ', 0.91)
+('time: ', 19.04) ('position: ', 1.88) ('speed: ', 1.75)
+('time: ', 19.68) ('position: ', 2.75) ('speed: ', 1.21)
+('time: ', 20.31) ('position: ', 2.12) ('speed: ', 1.37)
+
+('time: ', 20.95) ('position: ', 3.16) ('speed: ', 1.17)
+
+('time: ', 21.58) ('position: ', 3.31) ('speed: ', 1.11)
+('time: ', 22.21) ('position: ', 3.86) ('speed: ', 1.27)
+('time: ', 22.85) ('position: ', 4.61) ('speed: ', 1.1)
+('time: ', 23.48) ('position: ', 5.09) ('speed: ', 1.18)
+
+('time: ', 24.11) ('position: ', 6.14) ('speed: ', 1.22)
+('time: ', 24.74) ('position: ', 7.25) ('speed: ', 1.22)
+
+('time: ', 25.37) ('position: ', 8.6) ('speed: ', 1.35)
+('time: ', 26.01) ('position: ', 9.82) ('speed: ', 1.34)
+
+('time: ', 26.64) ('position: ', 10.59) ('speed: ', 1.33)
+('time: ', 27.27) ('position: ', 12.02) ('speed: ', 1.39)
+('time: ', 27.9) ('position: ', 11.8) ('speed: ', 1.2)
+('time: ', 28.53) ('position: ', 12.47) ('speed: ', 1.28)
+('time: ', 29.17) ('position: ', 12.72) ('speed: ', 1.08)
+('time: ', 29.8) ('position: ', 13.08) ('speed: ', 1.2)
+('time: ', 30.43) ('position: ', 13.35) ('speed: ', 1.06)
+('time: ', 31.06) ('position: ', 13.35) ('speed: ', 1.03)
+('time: ', 31.7) ('position: ', 13.78) ('speed: ', 1.02)
+('time: ', 32.33) ('position: ', 13.93) ('speed: ', 0.95)
+('time: ', 32.96) ('position: ', 14.17) ('speed: ', 0.96)
+('time: ', 33.6) ('position: ', 14.34) ('speed: ', 0.88)
+('time: ', 34.23) ('position: ', 14.51) ('speed: ', 0.87)
+
+('time: ', 34.87) ('position: ', 12.49) ('speed: ', 0.53)
+
+('time: ', 35.5) ('position: ', 13.68) ('speed: ', 0.75)
+('time: ', 36.13) ('position: ', 13.41) ('speed: ', 0.51)
+('time: ', 36.77) ('position: ', 13.66) ('speed: ', 0.81)
+
+('time: ', 37.41) ('position: ', 13.41) ('speed: ', 0.46)
+('time: ', 38.05) ('position: ', 14.26) ('speed: ', 0.71)
+('time: ', 38.68) ('position: ', 13.86) ('speed: ', 0.51)
+
+('time: ', 39.31) ('position: ', 13.83) ('speed: ', 0.56)
+
+('time: ', 39.94) ('position: ', 13.72) ('speed: ', 0.41)
+('time: ', 40.58) ('position: ', 14.2) ('speed: ', 0.55)
+('time: ', 41.21) ('position: ', 14.27) ('speed: ', 0.47)
+('time: ', 41.84) ('position: ', 14.49) ('speed: ', 0.51)
+('time: ', 42.47) ('position: ', 14.62) ('speed: ', 0.45)
+('time: ', 43.11) ('position: ', 14.76) ('speed: ', 0.46)
+('time: ', 43.74) ('position: ', 14.88) ('speed: ', 0.43)
+
+('time: ', 44.38) ('position: ', 12.12) ('speed: ', 0.03)
+
+('time: ', 45.01) ('position: ', 15.41) ('speed: ', 0.6)
+
+('time: ', 45.65) ('position: ', 14.02) ('speed: ', 0.09)
+
+('time: ', 46.29) ('position: ', 15.36) ('speed: ', 0.79)
+('time: ', 46.92) ('position: ', 15.1) ('speed: ', 0.06)
+('time: ', 47.55) ('position: ', 15.26) ('speed: ', 0.55)
+('time: ', 48.19) ('position: ', 15.31) ('speed: ', 0.24)
+('time: ', 48.82) ('position: ', 15.39) ('speed: ', 0.34)
+('time: ', 49.46) ('position: ', 15.44) ('speed: ', 0.32)
+('time: ', 50.09) ('position: ', 15.5) ('speed: ', 0.29)
+('time: ', 50.72) ('position: ', 15.55) ('speed: ', 0.29)
+('time: ', 51.35) ('position: ', 15.59) ('speed: ', 0.27)
+('time: ', 51.99) ('position: ', 15.63) ('speed: ', 0.26)
+('time: ', 52.62) ('position: ', 15.67) ('speed: ', 0.25)
+('time: ', 53.26) ('position: ', 15.7) ('speed: ', 0.24)
+('time: ', 53.89) ('position: ', 15.73) ('speed: ', 0.23)
+('time: ', 54.52) ('position: ', 15.76) ('speed: ', 0.22)
+('time: ', 55.15) ('position: ', 15.78) ('speed: ', 0.21)
+('time: ', 55.78) ('position: ', 16.07) ('speed: ', 0.24)
+('time: ', 56.42) ('position: ', 16.97) ('speed: ', 0.34)
+('time: ', 57.05) ('position: ', 17.07) ('speed: ', 0.31)
+('time: ', 57.69) ('position: ', 18.6) ('speed: ', 0.51)
+('time: ', 58.32) ('position: ', 19.4) ('speed: ', 0.46)
+
+('time: ', 58.96) ('position: ', 19.77) ('speed: ', 0.56)
+
+('time: ', 59.59) ('position: ', 20.36) ('speed: ', 0.47)
+
+('time: ', 60.22) ('position: ', 20.79) ('speed: ', 0.5)
+('time: ', 60.86) ('position: ', 21.76) ('speed: ', 0.61)
+('time: ', 61.49) ('position: ', 22.0) ('speed: ', 0.53)
+('time: ', 62.12) ('position: ', 22.54) ('speed: ', 0.6)
+('time: ', 62.76) ('position: ', 22.35) ('speed: ', 0.45)
+
+('time: ', 63.39) ('position: ', 22.31) ('speed: ', 0.48)
+
+('time: ', 64.02) ('position: ', 22.28) ('speed: ', 0.39)
+
+('time: ', 64.66) ('position: ', 24.42) ('speed: ', 0.7)
+
+('time: ', 65.29) ('position: ', 26.04) ('speed: ', 0.79)
+
+('time: ', 65.92) ('position: ', 27.39) ('speed: ', 0.97)
+
+('time: ', 66.56) ('position: ', 28.65) ('speed: ', 0.89)
+('time: ', 67.2) ('position: ', 29.77) ('speed: ', 0.96)
+('time: ', 67.83) ('position: ', 30.78) ('speed: ', 0.99)
+('time: ', 68.46) ('position: ', 31.7) ('speed: ', 0.99)
+('time: ', 69.1) ('position: ', 32.52) ('speed: ', 1.01)
+('time: ', 69.73) ('position: ', 33.26) ('speed: ', 1.0)
+('time: ', 70.36) ('position: ', 33.93) ('speed: ', 1.0)
+('time: ', 70.99) ('position: ', 34.53) ('speed: ', 0.99)
+('time: ', 71.63) ('position: ', 35.07) ('speed: ', 0.98)
+('time: ', 72.26) ('position: ', 35.56) ('speed: ', 0.96)
+('time: ', 72.89) ('position: ', 36.0) ('speed: ', 0.94)
+('time: ', 73.53) ('position: ', 36.39) ('speed: ', 0.92)
+('time: ', 74.16) ('position: ', 36.75) ('speed: ', 0.9)
+('time: ', 74.79) ('position: ', 38.15) ('speed: ', 1.02)
+('time: ', 75.43) ('position: ', 39.81) ('speed: ', 1.13)
+('time: ', 76.06) ('position: ', 40.9) ('speed: ', 1.2)
+('time: ', 76.69) ('position: ', 42.04) ('speed: ', 1.2)
+('time: ', 77.33) ('position: ', 43.01) ('speed: ', 1.18)
+('time: ', 77.96) ('position: ', 43.91) ('speed: ', 1.22)
+('time: ', 78.59) ('position: ', 44.71) ('speed: ', 1.18)
+
+('time: ', 79.23) ('position: ', 45.43) ('speed: ', 1.18)
+('time: ', 79.86) ('position: ', 46.08) ('speed: ', 1.17)
+('time: ', 80.49) ('position: ', 46.93) ('speed: ', 1.18)
+('time: ', 81.12) ('position: ', 47.53) ('speed: ', 1.16)
+
+('time: ', 81.76) ('position: ', 50.04) ('speed: ', 1.42)
+
+('time: ', 82.39) ('position: ', 50.52) ('speed: ', 1.27)
+('time: ', 83.02) ('position: ', 51.26) ('speed: ', 1.39)
+('time: ', 83.65) ('position: ', 51.93) ('speed: ', 1.16)
+('time: ', 84.28) ('position: ', 52.53) ('speed: ', 1.28)
+
+('time: ', 84.91) ('position: ', 53.61) ('speed: ', 1.28)
+('time: ', 85.54) ('position: ', 54.78) ('speed: ', 1.32)
+('time: ', 86.18) ('position: ', 55.64) ('speed: ', 1.35)
+('time: ', 86.81) ('position: ', 56.22) ('speed: ', 1.28)
+('time: ', 87.45) ('position: ', 56.88) ('speed: ', 1.25)
+('time: ', 88.08) ('position: ', 58.77) ('speed: ', 1.42)
+
+('time: ', 88.71) ('position: ', 57.48) ('speed: ', 1.08)
+
+('time: ', 89.35) ('position: ', 58.03) ('speed: ', 1.2)
+
+('time: ', 89.98) ('position: ', 61.06) ('speed: ', 1.3)
+('time: ', 90.61) ('position: ', 61.75) ('speed: ', 1.47)
+('time: ', 91.24) ('position: ', 63.28) ('speed: ', 1.55)
+('time: ', 91.88) ('position: ', 64.28) ('speed: ', 1.3)
+('time: ', 92.52) ('position: ', 64.53) ('speed: ', 1.42)
+('time: ', 93.15) ('position: ', 65.2) ('speed: ', 1.29)
+('time: ', 93.78) ('position: ', 65.62) ('speed: ', 1.24)
+('time: ', 94.41) ('position: ', 67.16) ('speed: ', 1.43)
+
+('time: ', 95.05) ('position: ', 67.28) ('speed: ', 1.24)
+('time: ', 95.68) ('position: ', 67.77) ('speed: ', 1.31)
+('time: ', 96.32) ('position: ', 68.92) ('speed: ', 1.24)
+('time: ', 96.95) ('position: ', 69.48) ('speed: ', 1.3)
+('time: ', 97.59) ('position: ', 70.18) ('speed: ', 1.29)
+('time: ', 98.22) ('position: ', 72.22) ('speed: ', 1.4)
+('time: ', 98.86) ('position: ', 72.92) ('speed: ', 1.38)
+
+('time: ', 99.49) ('position: ', 74.07) ('speed: ', 1.47)
+('time: ', 100.12) ('position: ', 78.13) ('speed: ', 1.76)
+('time: ', 100.76) ('position: ', 79.82) ('speed: ', 1.83)
+Traceback (most recent call last):
+  File "locating_v2.py", line 125, in <module>
+    mtr_service(myRSSI)
+  File "locating_v2.py", line 86, in mtr_service
+    mtr_alarm(speed)
+  File "locating_v2.py", line 33, in mtr_alarm
+    alarmCounter = alarmCounter + 1
+UnboundLocalError: local variable 'alarmCounter' referenced before assignment

@@ -73,16 +73,15 @@ def mtr_service(myRSSI):
                 print("speed: ", round(speed, 2))
                 
                 data = {
-                'Type': 'loc',
-                'mac': 'testMac',
+                'target': 'B',
                 'ts': round(timeTag,2),
-                'position': round(positionX,2),
-                'speed': round(speed, 2),
-                'remark': 'filtered'
+                'loc_x': round(positionX,2),
+                'loc_y': round(positionY,2),
+                'val': round(speed,2)
             }
             
             if mtr_server_state == True:
-                myClient.send(data)
+                myClient.sendData(data)
             
             mtr_alarm(speed)
             
@@ -96,6 +95,8 @@ if __name__ == '__main__':
     cp.read("config/db.cfg")
     method = cp.get('iBeacon_config', "locatingMethod")
     beta = cp.get('iBeacon_config','EWMA_Beta')
+    serverIP = cp.get('tcp_config','ip')
+    serverPort=cp.get('tcp_config','port')
     alarmThreshold = int(cp.get('speed_config','alarmThreshold'))
     alarmSpeed = float(cp.get('speed_config','alarmSpeed'))
     myFile = open("log/dataLog " + time.asctime(time.localtime(time.time())) + ".txt", 'w')
