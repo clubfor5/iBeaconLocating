@@ -32,7 +32,9 @@ def getEWMAFilteredRSSI(devices, beaconAddress, mask, rssiTable):
             }]
         rawDataFile.writelines(json.dumps(data) + '\n')
         for i in range(len(mask)):
-            if mask[i] > 8:
+            if mask[i] > 3:
+                rssiTable[i] = rssiTable[i] - 5
+            if rssiTable[i] < -100:
                 rssiTable[i] = -100
         
         if debug == '1':

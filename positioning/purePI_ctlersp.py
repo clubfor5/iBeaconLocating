@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 #########################################################
 class purePI_Ctler:
 
-    def __init__(self, start_posi, kp=0.12, ki=0.42, skp=0.63, ski=0.42, skpr = 0.0045):
+    def __init__(self, start_posi, kp=0.12, ki=0.38, skp=0.41, ski=0.311, skpr = 0.005):
         self.kp = kp
         self.ki = ki
         self.skp = skp
@@ -37,7 +37,7 @@ class purePI_Ctler:
         self.__uspeed = self.speed - self.__speedBuffer[0]
         delSpeed = self.skp*(self.__uspeed-self.__uspeed1)+self.ski*self.__uspeed-self.skpr*(self.__speedBuffer[0]-self.__speedBuffer[7])
         self.__speedBuffer[0] = self.__speedBuffer[0]+delSpeed
-        self.__speedBuffer[0] = sum(self.__speedBuffer[0:4])/4
+        self.__speedBuffer[0] = sum(self.__speedBuffer[0:2])/2
         self.__uspeed1 = self.__uspeed
         self.speed = self.__speedBuffer[0]
 
@@ -56,8 +56,8 @@ if  __name__ == "__main__":
 	for i in range(len(output)-1):   #
     		[output[i+1],speed[i+1]] = ctler.posiFlter(f[i+1][1],f[i+1][0])
 	plt.figure
-#plt.plot(f[:,0],f[:,2])
-#plt.plot(f[:,0],speed)
+	#plt.plot(f[:,0],f[:,2])
+	#plt.plot(f[:,0],speed)
 	plt.plot(f[:,0],output)
 	plt.savefig('/Users/siriushe/Desktop/abcdd.png')
 
