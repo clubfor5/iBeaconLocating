@@ -4,7 +4,7 @@ import json
 
 
 class mtrClient:
-    def __init__(self, host = '192.168.2.167', port = 4000):
+    def __init__(self, host = '143.89.50.151', port = 4004):
         self.host = host
         self.port = port
         self.socket = socket(AF_INET, SOCK_DGRAM)
