@@ -70,8 +70,8 @@ def mtr_service(myRSSI):
         if method == "proximity":
             positionX,positionY, timeTag = pos.proximity(startTime, myRSSI, beaconInfos)
             [positionXX, speed] = PID.posiFlter(positionX, timeTag)
-            speed = speed * 0.4 + previouSpeed * 0.6
-            previouSpeed = speed 
+            #speed = speed * 0.4 + previouSpeed * 0.6
+	        #previouSpeed = speed 
             if preCounter >= 3:
                 positionLog = str(timeTag) + ","+str(positionXX) + ','
                 orginLog = str(timeTag) + ","+str(positionX) + ','
@@ -102,8 +102,8 @@ def mtr_service(myRSSI):
                 alarmCounter = 0
                 
             #---------alarm -----------#
-            #alarmState = alarmCtl.alarm_ctl(speed)
-            if alarmCounter >= 3 :
+            alarmState = alarmCtl.alarm_ctl(speed)
+            if alarmState == True :
                 thread.start_new_thread(alarm.alarmShort, ("alarm", 17)) 
                # alarmState = True
 
