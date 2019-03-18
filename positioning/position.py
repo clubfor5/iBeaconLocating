@@ -29,11 +29,11 @@ def proximity(startTime, rssiTable, beaconInfos):
 
 	
     ### Check out the difference of signal strength 
-    if maxRSSI - smaxRSSI  >= 8:
+    if maxRSSI - smaxRSSI  >= 6:
         positionX = maxPositionX
         positionY = maxPositionY
         
-    elif maxRSSI - smaxRSSI  >= 4:
+    elif maxRSSI - smaxRSSI  >= 3:
         positionX = maxPositionX * 0.75 + smaxPositionX * 0.25
         positionY = maxPositionY * 0.75 + smaxPositionY * 0.25
    

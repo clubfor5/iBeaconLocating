@@ -66,9 +66,14 @@ def mtr_service(myRSSI):
             fPositionX = float (sum(positionBufferX) / len(positionBufferX))
             PID = purePI.purePI_Ctler(fPositionX)
             preCounter = preCounter + 1
-
+        else:
+            preCounter = preCounter + 1
         if method == "proximity":
             positionX,positionY, timeTag = pos.proximity(startTime, myRSSI, beaconInfos)
+            if preCounter >= 10:
+                if abs(positionX-fPositionX) > 10:    
+                    continue
+            fPositionX = positionX
             [positionXX, speed] = PID.posiFlter(positionX, timeTag)
             #speed = speed * 0.4 + previouSpeed * 0.6
 	        #previouSpeed = speed 
