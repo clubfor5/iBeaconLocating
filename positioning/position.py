@@ -40,7 +40,7 @@ def proximity(startTime, rssiTable, beaconInfos):
     else:
 	positionX = maxPositionX * 0.5 + smaxPositionX * 0.5
 	positionY = maxPositionY * 0.5 + smaxPositionY * 0.5 
-	print
+	
     
     ### in case that max and smax is not neighbor 
     if abs(maxPositionX - smaxPositionX) >= 11:

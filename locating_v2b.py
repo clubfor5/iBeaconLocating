@@ -93,7 +93,7 @@ def mtr_service(myRSSI):
                 'val': round(speed, 2)
             }
             if mtr_server_state == True:
-                myClient.send(data)
+                myClient.sendData(data)
 
             if abs(speed) >= 1.5:
                 alarmCounter = alarmCounter + 1
