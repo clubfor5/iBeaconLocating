@@ -38,8 +38,8 @@ def proximity(startTime, rssiTable, beaconInfos):
         positionY = maxPositionY * 0.75 + smaxPositionY * 0.25
    
     else:
-	positionX = maxPositionX * 0.5 + smaxPositionX * 0.5
-	positionY = maxPositionY * 0.5 + smaxPositionY * 0.5 
+	      positionX = maxPositionX * 0.5 + smaxPositionX * 0.5
+	      positionY = maxPositionY * 0.5 + smaxPositionY * 0.5 
 	
     
     ### in case that max and smax is not neighbor 

@@ -70,18 +70,18 @@ def mtr_service(myRSSI):
             preCounter = preCounter + 1
         if method == "proximity":
             positionX,positionY, timeTag = pos.proximity(startTime, myRSSI, beaconInfos)
-            if abs(positionX-fPositionX) > 10:   
+
+            if abs(positionX-fPositionX) >= 1:   
                 delta = positionX -fPositionX
                 positionX = positionX + delta / abs(delta) # add only one single step
-                    
-            fPositionX = positionX
-            [positionXX, speed] = PID.posiFlter(positionX, timeTag)
-            #speed = speed * 0.4 + previouSpeed * 0.6
-	        #previouSpeed = speed 
+                fPositionX = positionX
+            else:
+                fPositionX = positionX
+            
             spd.pushLocation(timeTag,positionXX)
             avsp = spd.speedCalculate()
             
-            if rssiBuf.count(-100) >= 3:
+            if rssiBuf.count(-100) >= 2:
                 speed = 0
                 
 
