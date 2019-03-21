@@ -36,6 +36,7 @@ def mtr_service(myRSSI):
     preCounter = 0
     alarmCounter = 0
     alarmState = False
+    avspAcc = 0
     previouSpeed = 0.3
     while True:
         global scanner
@@ -68,19 +69,29 @@ def mtr_service(myRSSI):
             preCounter = preCounter + 1
         else:
             preCounter = preCounter + 1
+
         if method == "proximity":
             positionX,positionY, timeTag = pos.proximity(startTime, myRSSI, beaconInfos)
-            if abs(positionX-fPositionX) > 10:   
-                delta = positionX -fPositionX
-                positionX = positionX + delta / abs(delta) # add only one single step
-                    
+            if preCounter >= 10:
+                if abs(positionX-fPositionX) > 10:   
+                    delta = positionX -fPositionX
+                    step = delta / abs(delta)
+                    print('step,',step)
+                    positionX = positionX + step # add only one single step
+                    fPositionX = positionX
+                    continue
+
             fPositionX = positionX
             [positionXX, speed] = PID.posiFlter(positionX, timeTag)
             #speed = speed * 0.4 + previouSpeed * 0.6
 	        #previouSpeed = speed 
             spd.pushLocation(timeTag,positionXX)
             avsp = spd.speedCalculate()
-            
+            avsp = abs(avsp)
+            if avsp ==  0:
+                avspAcc = avsp
+            else:
+                avspAcc = avspAcc * 0.3 + avsp * 0.7
             if rssiBuf.count(-100) >= 3:
                 speed = 0
                 
@@ -88,7 +99,7 @@ def mtr_service(myRSSI):
             if preCounter >= 3:
                 positionLog = str(timeTag) + ","+str(positionXX) + ','
                 orginLog = str(positionX) + ','
-                avrsLog = str(avsp)+','
+                avrsLog = str(avspAcc)+','
                 speedLog = str(speed) + '\n'
                 
                 myFile.writelines(positionLog+orginLog+avrsLog)
@@ -99,8 +110,8 @@ def mtr_service(myRSSI):
                 print ("time: ", round(timeTag,2)),
                 print ("position: ", round(positionXX,2)),
                 print("oringin:",round(positionX,2)),
-                print("speed: ", round(speed, 2)),
-                print ('average speed: ', avsp)
+                print("speed: ", round(avspAcc, 2)),
+                print ('average speed: ', avspAcc)
             
 
             if abs(speed) >= 1.5:
@@ -111,7 +122,7 @@ def mtr_service(myRSSI):
 
             
             #---------alarm -----------#
-            alarmState = alarmCtl.alarm_ctl(speed)
+            alarmState = alarmCtl.alarm_ctl(avspAcc)
             if alarmState == True :
                 thread.start_new_thread(alarm.alarmShort, ("alarm", 17)) 
             
@@ -121,6 +132,7 @@ def mtr_service(myRSSI):
                 'loc_x': round(positionXX,2),
                 'loc_y': round(positionY, 2),
                 'val': round(speed, 2),
+                'val_avg': round(avspAcc,2),
                 'status':int(alarmState)
             }
             if mtr_server_state == True:

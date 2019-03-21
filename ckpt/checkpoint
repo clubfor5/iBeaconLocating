@@ -1,0 +1,2 @@
+model_checkpoint_path: "/Users/siriushe/Documents/HKUST/RFIndependentProject/ckpt/model.ckpt"
+all_model_checkpoint_paths: "/Users/siriushe/Documents/HKUST/RFIndependentProject/ckpt/model.ckpt"

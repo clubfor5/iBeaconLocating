@@ -2,14 +2,14 @@ import numpy as np
 import time
 import ConfigParser
 
-cp = ConfigParser.ConfigParser()
-cp.read("/home/pi/iBeaconLocating/config/db.cfg")
-debug = cp.get('iBeacon_config', "positionInfo")
+
 
 def proximity(startTime, rssiTable, beaconInfos):
     ### Sort the strength of signals 
 
-    
+    cp = ConfigParser.ConfigParser()
+    cp.read("/home/pi/iBeaconLocating/config/db.cfg")
+    debug = cp.get('iBeacon_config', "positionInfo")
     numOfBeacons = len(rssiTable)
     buff = rssiTable
     sortList = np.argsort(buff)

@@ -37,7 +37,6 @@ def mtr_service(myRSSI):
     alarmCounter = 0
     alarmState = False
     previouSpeed = 0.3
-    positionXX = 0
     while True:
         global scanner
         devices = scanner.scan(0.57)
@@ -75,14 +74,13 @@ def mtr_service(myRSSI):
             if abs(positionX-fPositionX) >= 1:   
                 delta = positionX -fPositionX
                 positionX = positionX + delta / abs(delta) # add only one single step
-                positionXX = positionX
-                fPositionX = positionXX
+                fPositionX = positionX
             else:
-                fPositionXX = positionX
+                fPositionX = positionX
             
-            spd.pushLocation(timeTag,positionX)
+            spd.pushLocation(timeTag,positionXX)
             avsp = spd.speedCalculate()
-            speed = 0
+            
             if rssiBuf.count(-100) >= 2:
                 speed = 0
                 
@@ -123,7 +121,6 @@ def mtr_service(myRSSI):
                 'loc_x': round(positionXX,2),
                 'loc_y': round(positionY, 2),
                 'val': round(speed, 2),
-                'val_avg': round(avsp, 2),
                 'status':int(alarmState)
             }
             if mtr_server_state == True:
@@ -133,9 +130,9 @@ def mtr_service(myRSSI):
 
 if __name__ == '__main__':
     #---- load program information from db.cfg-----#
-    print("starting program..")
-    cp = ConfigParser.ConfigParser()
-    cp.read("config/db.cfg")
+  
+  cp = ConfigParser.ConfigParser()
+	    cp.read("config/db.cfg")
     method = cp.get('iBeacon_config', "locatingMethod")
     beta = cp.get('iBeacon_config','EWMA_Beta')
     alarmThreshold = int(cp.get('speed_config','alarmThreshold'))
