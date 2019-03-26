@@ -1,4 +1,4 @@
-import ConfigParser
+import configparser as ConfigParser
 class BeaconPoll:
 	def __init__(self, address, positionX, positionY, tag):
 		self.address = address

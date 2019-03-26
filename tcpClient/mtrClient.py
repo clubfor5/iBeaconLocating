@@ -12,7 +12,10 @@ class mtrClient:
         
     def sendData(self, data):
         #print(str(self.socket.recv(2048)))
-        self.socket.sendto(json.dumps(data).encode(),self.addr)
+        try: 
+      	    self.socket.sendto(json.dumps(data).encode(),self.addr)
+        except:
+	        print("no network")
        #  print(str(self.socket.recv(2048)))
        #  self.socket.close()
  

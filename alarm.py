@@ -1,4 +1,4 @@
-import thread
+import _thread
 import RPi.GPIO as GPIO
 import time
 def alarm(threadName, pin):

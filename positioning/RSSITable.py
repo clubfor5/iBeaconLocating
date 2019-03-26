@@ -1,12 +1,12 @@
-import ConfigParser
+import configparser as ConfigParser
 import sys
-import filters as flts
+import positioning.filters as flts
 import time
 import json
-cp = ConfigParser.ConfigParser()
-cp.read("/home/pi/iBeaconLocating/config/db.cfg")
-debug = cp.get('iBeacon_config', "rssiInfo")
-beta = float(cp.get('iBeacon_config', 'EWMA_Beta'))
+#cp = ConfigParser.ConfigParser()
+#cp.read("iBeaconLocating/config/db.cfg")
+debug = 1
+beta = 0
 rawDataFile = open("/home/pi/iBeaconLocating/log/RawDataLog " + time.asctime(time.localtime(time.time())) + ".txt", 'w')
 def getEWMAFilteredRSSI(devices, beaconAddress, mask, rssiTable):
         for i in range(len(mask)):
