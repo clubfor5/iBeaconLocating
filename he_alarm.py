@@ -10,7 +10,7 @@ import numpy as np
 
 class he_alarm:
 
-    def __init__(self, sp=1.2, almc1=1.1, alm_step=0.12, almc2=1.2):
+    def __init__(self, sp=1.4, almc1=1.3, alm_step=0.12, almc2=1.4):
         self.sp = sp
         self.almc1 = almc1
         self.alm_step = alm_step
