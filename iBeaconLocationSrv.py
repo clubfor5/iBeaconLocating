@@ -7,7 +7,7 @@ import json
 import configparser as ConfigParser
 import sys
 import os
-import _thread
+import threading
 import tcpClient.mtrClient as mtr
 import positioning.beaconAddress as beaconAdd
 import positioning.filters as flts
@@ -25,9 +25,20 @@ class ScanDelegate(DefaultDelegate):
 
 ### devices: scanned result; beacons: address table of beacons; mask: num of times the the address not received.
 
-        
+
+def mtrAlarm():
+    global avspAcc, alarmState
+    try:
+        while True:
+            alarmState = alarmCtl.alarm_ctl(avspAcc)
+            if alarmState == True :
+                alarm.alarmShort("alarm", 17)        
+    except Exception as e:
+        print(e)    
+
 #=========#====================#==========#======================#=========
 def mtr_service(myRSSI):
+    global avspAcc,alarmState
     currentTime = time.time()
     mask = np.zeros(numOfBeacons)
     positionBufferX = [0 for i in range(3)]
@@ -39,6 +50,7 @@ def mtr_service(myRSSI):
     avspAcc = 0
     previouSpeed = 0.3
     while True:
+        # try start udp if failed before
         global mtr_server_state,myClient
         if mtr_server_state == False:
             try:
@@ -48,16 +60,18 @@ def mtr_service(myRSSI):
             except:
                 print("failed to start network service!")
                 mtr_server_state = False
-        print(mtr_server_state)
+        
+        # scan iBeacon
         global scanner
         devices = scanner.scan(0.57)
-        # insert a time to timeout inside the squares. this returns a list with ALL bluetooth devices nearby (not only iBeacon).
+
+        # get RSSI table
         myRSSI = RSSITable.getEWMAFilteredRSSI(devices, beaconAddress, mask, myRSSI)
         # always make sure that device is under the coverage of at least one beacon
         if myRSSI.count(-100) == len(myRSSI):
             print ("no beacon detected, device out of range!")
             continue
-      
+
         rssiBuf = []
         indexBuf = []
         a = myRSSI
@@ -65,9 +79,7 @@ def mtr_service(myRSSI):
         for i in range(5):
             rssiBuf.append(rssi[i])
             indexBuf.append(a.index(rssi[i]))
-        
-
-            
+                
         # prepare basic information of iBeacon before take action
         if preCounter < 3:
             positionBufferX[preCounter],positionBufferY[preCounter], timeTagBuffer[preCounter] =  pos.proximity(startTime, myRSSI, beaconInfos)
@@ -80,8 +92,10 @@ def mtr_service(myRSSI):
         else:
             preCounter = preCounter + 1
 
+        # start proximity
         if method == "proximity":
             positionX,positionY, timeTag = pos.proximity(startTime, myRSSI, beaconInfos)
+            # if jump too fast, smooth the position
             if preCounter >= 10:
                 if abs(positionX-fPositionX) > 10:   
                     delta = positionX -fPositionX
@@ -90,11 +104,11 @@ def mtr_service(myRSSI):
                     positionX = positionX + step # add only one single step
                     fPositionX = positionX
                     continue
-
+            # PID control to smooth it again
             fPositionX = positionX
-            [positionXX, speed] = PID.posiFlter(positionX, timeTag)
-            #speed = speed * 0.4 + previouSpeed * 0.6
-	        #previouSpeed = speed 
+            [positionXX, speed] = PID.posiFlter(positionX, timeTag) 
+            
+            # LMMSE 
             spd.pushLocation(timeTag,positionXX)
             avsp = spd.speedCalculate()
             avsp = abs(avsp)
@@ -102,40 +116,27 @@ def mtr_service(myRSSI):
                 avspAcc = avsp
             else:
                 avspAcc = avspAcc * 0.3 + avsp * 0.7
+
+            # avoid the case that the iBeacon is too far away 
             if rssiBuf.count(-100) >= 3:
                 speed = 0
                 
-
+            # print the log 
             if preCounter >= 3:
                 positionLog = str(timeTag) + ","+str(positionXX) + ','
                 orginLog = str(positionX) + ','
                 avrsLog = str(avspAcc)+','
                 speedLog = str(speed) + '\n'
-                
                 myFile.writelines(positionLog+orginLog+avrsLog)
                 myFile.writelines(speedLog)
-
-                print("index: ", indexBuf),
-                print("rssi: ", rssiBuf),
-                print ("time: ", round(timeTag,2)),
-                print ("position: ", round(positionXX,2)),
-                print("oringin:",round(positionX,2)),
-                print("speed: ", round(avspAcc, 2)),
-                print ('average speed: ', avspAcc)
+                #print ("time: ", round(timeTag,2)),
+                #print("index: ", indexBuf),
+                #print("rssi: ", rssiBuf)
+                #print ("position: ", round(positionXX,2)),
+                #print("oringin:",round(positionX,2)),
+                #print("average speed: ", round(avspAcc, 2)),
             
-
-            if abs(speed) >= 1.5:
-                alarmCounter = alarmCounter + 1
-                alramState = False
-            else:
-                alarmCounter = 0
-
-            
-            #---------alarm -----------#
-            alarmState = alarmCtl.alarm_ctl(avspAcc)
-            if alarmState == True :
-                thread.start_new_thread(alarm.alarmShort, ("alarm", 17)) 
-            
+            #send data to server
             data = {
                 'type':'1',
                 'target': '1005',
@@ -148,11 +149,13 @@ def mtr_service(myRSSI):
             }
             if mtr_server_state == True:
                 myClient.sendData(data)
-               # alarmState = True
+            
             
 
 if __name__ == '__main__':
     #---- load program information from db.cfg-----#
+    avspAcc = 0
+    alarmState = False
     cp = ConfigParser.ConfigParser()
     cp.read("config/db.cfg")
     method = cp.get('iBeacon_config', "locatingMethod")
@@ -171,7 +174,7 @@ if __name__ == '__main__':
     except:
         print("failed to start network service!")
         mtr_server_state = False
-    
+    print("network service status:", mtr_server_state)
     # all the information of iBeacon information has been restored.
     beaconInfos,numOfBeacons = beaconAdd.getBeaconInfo()
     beaconAddress = []
@@ -189,6 +192,8 @@ if __name__ == '__main__':
     
     #------start service--------
     startTime = time.time()
+    threadAlarmSrv = threading.Thread(target=mtrAlarm)
+    threadAlarmSrv.start()
     mtr_service(myRSSI)
 
 

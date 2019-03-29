@@ -24,4 +24,4 @@ def alarmShort(threadName, pin):
 		time.sleep(0.05)
 
 if __name__ == '__main__':
-	alarm("ok",17)
+	_thread.start_new_thread(alarm, ("alarm", 17))
