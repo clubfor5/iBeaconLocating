@@ -137,7 +137,8 @@ def mtr_service(myRSSI):
                 thread.start_new_thread(alarm.alarmShort, ("alarm", 17)) 
             
             data = {
-                'target': '1001',
+                'type':'1',
+                'target': '1005',
                 'ts': round(timeTag,2),
                 'loc_x': round(positionXX,2),
                 'loc_y': round(positionY, 2),
